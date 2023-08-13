@@ -53,7 +53,7 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
-A high performance, low latency high frequency trading system written in C++. Utilizes custom data structures, memory allocators, and several low latency techniques to execute a large amount of concurrent trades, each with a minimal amount of latency.
+A high performance, low latency high frequency trading system written in C++. Utilizes custom, lock free data structures, custom TCP networking lib, memory allocators, concurrency and several low latency techniques to execute a large amount of concurrent trades, each with a minimal amount of round trip latency.
 Built for Linux x86 systems only (some inline x86 ASM is used, and some POSIX system calls and APIs are used too). You can try to run it on WSL if you are on x86 Windows, but I've not tested this.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
