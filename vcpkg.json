@@ -1,0 +1,12 @@
+{
+    "name": "hft",
+    "version-string": "0.0.1",
+    "dependencies": [
+      {
+        "name": "gtest",
+        "version>=": "1.13.0"
+      }
+    ],
+    "builtin-baseline": "724744639659efd5a335ae967ee2b33c71fb49ac"
+  }
+  

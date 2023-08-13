@@ -1,0 +1,198 @@
+{
+  "$schema": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.2.1/schemas/spdx-schema.json",
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "documentNamespace": "https://spdx.org/spdxdocs/gtest-x64-linux-1.13.0-a01ab8bc-635e-419a-a0a0-82e550867acf",
+  "name": "gtest:x64-linux@1.13.0 f1b1c6e32d6e8aa7e93f75e21e380af48bb36038bd52f2b490cd656396dfd992",
+  "creationInfo": {
+    "creators": [
+      "Tool: vcpkg-9990a4c9026811a312cb2af78bf77f3d9d288416"
+    ],
+    "created": "2023-08-11T18:36:18Z"
+  },
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "GENERATES",
+      "relatedSpdxElement": "SPDXRef-binary"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-0"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-1"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-2"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-3"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-4"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-5"
+    },
+    {
+      "spdxElementId": "SPDXRef-binary",
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-0",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-1",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-2",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-3",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-4",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-5",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    }
+  ],
+  "packages": [
+    {
+      "name": "gtest",
+      "SPDXID": "SPDXRef-port",
+      "versionInfo": "1.13.0",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@3f70f42192aacc5f8242c14d959d02a802f7559c",
+      "homepage": "https://github.com/google/googletest",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "GoogleTest and GoogleMock testing frameworks",
+      "comment": "This is the port (recipe) consumed by vcpkg."
+    },
+    {
+      "name": "gtest:x64-linux",
+      "SPDXID": "SPDXRef-binary",
+      "versionInfo": "f1b1c6e32d6e8aa7e93f75e21e380af48bb36038bd52f2b490cd656396dfd992",
+      "downloadLocation": "NONE",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "This is a binary package built by vcpkg."
+    },
+    {
+      "SPDXID": "SPDXRef-resource-1",
+      "name": "google/googletest",
+      "downloadLocation": "git+https://github.com/google/googletest@v1.13.0",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "checksums": [
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "70c0cfb1b4147bdecb467ecb22ae5b5529eec0abc085763213a796b7cdbd81d1761d12b342060539b936fa54f345d33f060601544874d6213fdde79111fa813e"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "fileName": ".//home/nyarosu/repos/hft/extern/vcpkg/buildtrees/versioning_/versions/gtest/3f70f42192aacc5f8242c14d959d02a802f7559c/clang-tidy-no-lint.patch",
+      "SPDXID": "SPDXRef-file-0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "f276fb224af39a1e6ad9a88719bd49f2ccc88b7837763b2b4f3d74f107894957"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": ".//home/nyarosu/repos/hft/extern/vcpkg/buildtrees/versioning_/versions/gtest/3f70f42192aacc5f8242c14d959d02a802f7559c/fix-main-lib-path.patch",
+      "SPDXID": "SPDXRef-file-1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "41847f3c185b429056e6b2d0c3779832b684e9e5d3440ccb7d66c065438553c1"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": ".//home/nyarosu/repos/hft/extern/vcpkg/buildtrees/versioning_/versions/gtest/3f70f42192aacc5f8242c14d959d02a802f7559c/001-fix-UWP-death-test.patch",
+      "SPDXID": "SPDXRef-file-2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "668c0c5e5811ff93907c09e7bb537c7ae2645c8985930808f7a20611d67a534f"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": ".//home/nyarosu/repos/hft/extern/vcpkg/buildtrees/versioning_/versions/gtest/3f70f42192aacc5f8242c14d959d02a802f7559c/usage",
+      "SPDXID": "SPDXRef-file-3",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "48a60f73437a325fd92cebb25c77ce48108f20610836039420b7e2070c91132a"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": ".//home/nyarosu/repos/hft/extern/vcpkg/buildtrees/versioning_/versions/gtest/3f70f42192aacc5f8242c14d959d02a802f7559c/portfile.cmake",
+      "SPDXID": "SPDXRef-file-4",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "01a32d62e079e74902c12910294fd14a4ad241a7eac37006565f53f8801d8949"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": ".//home/nyarosu/repos/hft/extern/vcpkg/buildtrees/versioning_/versions/gtest/3f70f42192aacc5f8242c14d959d02a802f7559c/vcpkg.json",
+      "SPDXID": "SPDXRef-file-5",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ef2acfbf042f2fc967d96d2199c51bbdada61bdac0a506032333b33907864940"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    }
+  ]
+}
