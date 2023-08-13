@@ -34,14 +34,12 @@ namespace utils::threads
      * @return new thread
      */
     template <typename Function, typename... Args>
-    inline std::thread createAndStart(int core_id, const std::string &name, Function &&func, Args &&...args) noexcept
-    {
+    inline std::thread createAndStart(int core_id, const std::string& name, Function&& func, Args&&... args) noexcept {
         std::atomic<bool> running{false}, failed{false};
         auto args_tuple{std::make_tuple(std::forward<Args>(args)...)};
 
         // Body for every thread. This sets affinity, then runs the provided function, passing arguments.
-        auto thread_body = [&running, &failed, &core_id, &name, &func, &args_tuple]()
-        {
+        auto thread_body = [&running, &failed, &core_id, &name, &func, &args_tuple]() {
             if (core_id >= 0 && !setThreadCore(core_id)) [[unlikely]]
             {
                 std::cerr << "Failed to set affinity for " << name << std::endl;
@@ -56,13 +54,11 @@ namespace utils::threads
         auto thread{std::thread{thread_body}};
 
         // Wait for thread to start running TODO switch to condition variable
-        while (!running && !failed)
-        {
+        while (!running && !failed) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
         }
 
-        if (failed) [[unlikely]]
-        {
+        if (failed) [[unlikely]] {
             thread.join();
         }
 
@@ -75,8 +71,7 @@ namespace utils::threads
      * @param core_id Core ID to set affinity to
      * @returns true if successful, false otherwise
      */
-    inline bool setThreadCore(int core_id) noexcept
-    {
+    inline bool setThreadCore(int core_id) noexcept {
         cpu_set_t cpuset;
         CPU_ZERO(&cpuset);
         CPU_SET(core_id, &cpuset);

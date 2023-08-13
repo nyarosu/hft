@@ -2,6 +2,7 @@ add_executable(
     UtilsTests
     threads_test.cpp
     assertions_test.cpp
+    mempool_test.cpp
 )
 
 target_link_libraries(
