@@ -1,8 +1,7 @@
 #pragma once
 /**
  * @file mempool.h
- * @author your name (you@domain.com)
- * @brief 
+ * @brief Dynamically allocated memory pool class
  * @version 0.1
  * @date 2023-08-13
  * 
