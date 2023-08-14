@@ -4,7 +4,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/nyarosu/hft">
     <img src="https://miro.medium.com/v2/resize:fit:1358/1*795TCPCY9EnT8lB7j49MZg.jpeg" alt="Logo" width="80" height="80">
   </a>
 
@@ -13,7 +13,7 @@
   <p align="center">
     A fast, high performance, low latency automated trading system built using C++, C and some x86 assembly.
     <br />
-    <a href=""><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/nyarosu/hft/docs/html/index.html"><strong>Explore the docs »</strong></a>
     <br />
     <br />
   </p>
