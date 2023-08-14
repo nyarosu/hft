@@ -63,7 +63,10 @@ namespace utils {
          */
         void resize(size_t new_size) {
             m_data.resize(new_size, { T(), true });
+            m_next_free_index = 0;
+            updateFreeIndex();
         }
+
 
         /**
          * @brief Allocate a new object in the next free block of the memory pool.
@@ -75,7 +78,7 @@ namespace utils {
         template<typename... Args>
         T* allocate(Args... args) noexcept {
             Block* ptr { &(m_data[m_next_free_index]) };
-            ASSERT(ptr->is_free, "Pool is full.");
+            ASSERT(ptr->is_free, "Memory pool out of space.");
         
             T* obj { &(ptr->data) };
 
@@ -90,7 +93,7 @@ namespace utils {
         /**
          * @brief Deallocate the element inside the pool given by the ptr elem.
          * Checks that pointer points to a valid element inside the pool. If it points to something not in the pool, or to something that's already been deallocated,
-         * an assertion error will 
+         * an assertion error will occur.
          * @param elem Pointer to the element to be deallocated
          */
         void deallocate(const T* elem) noexcept {
@@ -101,6 +104,7 @@ namespace utils {
             
             ASSERT(!m_data[index].is_free, "Attempted to deallocate unallocated entry in pool.");
             m_data[index].is_free = true;
+            m_next_free_index = index;
         };
 
     private:
@@ -111,21 +115,19 @@ namespace utils {
          * If we don't find one, we start from 0 (maybe something was deallocated) and walk up to initial_free_index.
          * If we still don't find one, the memory pool is full and we log a fatal error.
          */
-        void updateFreeIndex() noexcept { 
-            const auto initial_free_index { m_next_free_index };
-            while (!m_data[m_next_free_index].is_free) {
-                ++m_next_free_index;
-                
-                // At the highest index of our memory pool and haven't found a free block. Let's check from 0 up to initial_free_index
-                if (m_next_free_index == m_data.size()) [[unlikely]] {
-                    m_next_free_index = 0;
+        void updateFreeIndex() noexcept {
+            const auto initial_free_index = m_next_free_index;
+            const size_t total_size = m_data.size();
+
+            for (size_t count = 0; count < total_size; ++count) {
+                if (m_data[m_next_free_index].is_free) {
+                    return; // found a free index, early exit
                 }
 
-                // TODO implement better solution for when we're out of memory rather than logging and terminating.
-                if (m_next_free_index == initial_free_index) [[unlikely]] {
-                    FATAL("Memory pool out of space.");
-                }
+                // Use modulo to wrap around to the beginning when we reach the end
+                m_next_free_index = (m_next_free_index + 1) % total_size;
             }
         }
+
     };
 }

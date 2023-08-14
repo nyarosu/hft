@@ -1,0 +1,170 @@
+\hypertarget{classutils_1_1MemPool}{}\doxysection{utils\+::Mem\+Pool$<$ T $>$ Class Template Reference}
+\label{classutils_1_1MemPool}\index{utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}}
+
+
+Dynamically allocated memory pool. A large amount of memory is allocated up front, during construction. Then, you can request chunks of memory from the pool, and this will be much faster as the memory has already been allocated.  
+
+
+
+
+{\ttfamily \#include $<$mempool.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutils_1_1MemPool_a4185375baa1d70c8b6ab92313e40b55c}{Mem\+Pool}} (int size)
+\begin{DoxyCompactList}\small\item\em Create a new memory pool. Pool is initialized with all elements default constructed and marked as free. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutils_1_1MemPool_ae4c6a323a11405f574db34f1632a4f1a}{Mem\+Pool}} ()=delete
+\item 
+\mbox{\hyperlink{classutils_1_1MemPool_a76e2fb3bb9bd91456a3a392b495fe88a}{Mem\+Pool}} (const \mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}} \&)=delete
+\item 
+\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}} \& \mbox{\hyperlink{classutils_1_1MemPool_a5812e2ebb001c43a0d2a24ed61283d9f}{operator=}} (const \mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}} \&)=delete
+\item 
+\mbox{\hyperlink{classutils_1_1MemPool_a80fcb19715166557d80f4d9392b2e9ad}{Mem\+Pool}} (\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}} \&\&)=delete
+\item 
+\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}} \& \mbox{\hyperlink{classutils_1_1MemPool_a5d4c581ffd92bc0fdcb0582c2531d1ec}{operator=}} (\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}} \&\&)=delete
+\item 
+void \mbox{\hyperlink{classutils_1_1MemPool_a52e6cae15a56b6c662d9063e78f6f3e5}{resize}} (size\+\_\+t new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Resize pool to a new size. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\T $\ast$ \mbox{\hyperlink{classutils_1_1MemPool_a6a6561afbd5461d8a7582f34f79d229e}{allocate}} (Args... args) noexcept
+\begin{DoxyCompactList}\small\item\em Allocate a new object in the next free block of the memory pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classutils_1_1MemPool_a85cd84bda4f85d880b40d48a9b4379f4}{deallocate}} (const T $\ast$elem) noexcept
+\begin{DoxyCompactList}\small\item\em Deallocate the element inside the pool given by the ptr elem. Checks that pointer points to a valid element inside the pool. If it points to something not in the pool, or to something that\textquotesingle{}s already been deallocated, an assertion error will occur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class utils\+::\+Mem\+Pool$<$ T $>$}
+
+Dynamically allocated memory pool. A large amount of memory is allocated up front, during construction. Then, you can request chunks of memory from the pool, and this will be much faster as the memory has already been allocated. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of object held in pool, must have a default constructor \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classutils_1_1MemPool_a4185375baa1d70c8b6ab92313e40b55c}\label{classutils_1_1MemPool_a4185375baa1d70c8b6ab92313e40b55c}} 
+\index{utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}!MemPool@{MemPool}}
+\index{MemPool@{MemPool}!utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MemPool()}{MemPool()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classutils_1_1MemPool}{utils\+::\+Mem\+Pool}}$<$ T $>$\+::\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}} (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Create a new memory pool. Pool is initialized with all elements default constructed and marked as free. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Number of elements (of type T) in pool. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+T must have a default constructor 
+\end{DoxyNote}
+\mbox{\Hypertarget{classutils_1_1MemPool_ae4c6a323a11405f574db34f1632a4f1a}\label{classutils_1_1MemPool_ae4c6a323a11405f574db34f1632a4f1a}} 
+\index{utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}!MemPool@{MemPool}}
+\index{MemPool@{MemPool}!utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MemPool()}{MemPool()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classutils_1_1MemPool}{utils\+::\+Mem\+Pool}}$<$ T $>$\+::\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classutils_1_1MemPool_a76e2fb3bb9bd91456a3a392b495fe88a}\label{classutils_1_1MemPool_a76e2fb3bb9bd91456a3a392b495fe88a}} 
+\index{utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}!MemPool@{MemPool}}
+\index{MemPool@{MemPool}!utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MemPool()}{MemPool()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classutils_1_1MemPool}{utils\+::\+Mem\+Pool}}$<$ T $>$\+::\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}}$<$ T $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classutils_1_1MemPool_a80fcb19715166557d80f4d9392b2e9ad}\label{classutils_1_1MemPool_a80fcb19715166557d80f4d9392b2e9ad}} 
+\index{utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}!MemPool@{MemPool}}
+\index{MemPool@{MemPool}!utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MemPool()}{MemPool()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classutils_1_1MemPool}{utils\+::\+Mem\+Pool}}$<$ T $>$\+::\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}}$<$ T $>$ \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classutils_1_1MemPool_a6a6561afbd5461d8a7582f34f79d229e}\label{classutils_1_1MemPool_a6a6561afbd5461d8a7582f34f79d229e}} 
+\index{utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}!allocate@{allocate}}
+\index{allocate@{allocate}!utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename... Args$>$ \\
+T$\ast$ \mbox{\hyperlink{classutils_1_1MemPool}{utils\+::\+Mem\+Pool}}$<$ T $>$\+::allocate (\begin{DoxyParamCaption}\item[{Args...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Allocate a new object in the next free block of the memory pool. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Args} & types of arguments \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em args} & arguments forwarded to ctor of object being allocated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to new object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classutils_1_1MemPool_a85cd84bda4f85d880b40d48a9b4379f4}\label{classutils_1_1MemPool_a85cd84bda4f85d880b40d48a9b4379f4}} 
+\index{utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}!deallocate@{deallocate}}
+\index{deallocate@{deallocate}!utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{deallocate()}{deallocate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classutils_1_1MemPool}{utils\+::\+Mem\+Pool}}$<$ T $>$\+::deallocate (\begin{DoxyParamCaption}\item[{const T $\ast$}]{elem }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Deallocate the element inside the pool given by the ptr elem. Checks that pointer points to a valid element inside the pool. If it points to something not in the pool, or to something that\textquotesingle{}s already been deallocated, an assertion error will occur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elem} & Pointer to the element to be deallocated \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classutils_1_1MemPool_a5812e2ebb001c43a0d2a24ed61283d9f}\label{classutils_1_1MemPool_a5812e2ebb001c43a0d2a24ed61283d9f}} 
+\index{utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}}\& \mbox{\hyperlink{classutils_1_1MemPool}{utils\+::\+Mem\+Pool}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}}$<$ T $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classutils_1_1MemPool_a5d4c581ffd92bc0fdcb0582c2531d1ec}\label{classutils_1_1MemPool_a5d4c581ffd92bc0fdcb0582c2531d1ec}} 
+\index{utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}}\& \mbox{\hyperlink{classutils_1_1MemPool}{utils\+::\+Mem\+Pool}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}}$<$ T $>$ \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classutils_1_1MemPool_a52e6cae15a56b6c662d9063e78f6f3e5}\label{classutils_1_1MemPool_a52e6cae15a56b6c662d9063e78f6f3e5}} 
+\index{utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}!resize@{resize}}
+\index{resize@{resize}!utils::MemPool$<$ T $>$@{utils::MemPool$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classutils_1_1MemPool}{utils\+::\+Mem\+Pool}}$<$ T $>$\+::resize (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{new\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resize pool to a new size. 
+
+\begin{DoxyNote}{Note}
+If resizing to a smaller size, elements that don\textquotesingle{}t fit will be destroyed 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+size} & New size of pool. Can be larger or smaller than current size. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/nyarosu/repos/hft/src/utils/mempool/\mbox{\hyperlink{mempool_8hpp}{mempool.\+hpp}}\end{DoxyCompactItemize}

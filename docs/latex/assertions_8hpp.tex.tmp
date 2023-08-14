@@ -1,0 +1,21 @@
+\hypertarget{assertions_8hpp}{}\doxysection{/home/nyarosu/repos/hft/src/utils/assertions.hpp File Reference}
+\label{assertions_8hpp}\index{/home/nyarosu/repos/hft/src/utils/assertions.hpp@{/home/nyarosu/repos/hft/src/utils/assertions.hpp}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+Include dependency graph for assertions.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceutils}{utils}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceutils_ad09a37f0ec1f701d4258a5eabd576279}{utils\+::\+ASSERT}} (bool condition, const std\+::string \&message) noexcept
+\begin{DoxyCompactList}\small\item\em Asserts that condition is true, otherwise logs message and exits. Uses branch prediction hints. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceutils_a6d00d8c7eb8d4d57634795894d7e751d}{utils\+::\+FATAL}} (const std\+::string \&message) noexcept
+\begin{DoxyCompactList}\small\item\em Log error and exit immediately. \end{DoxyCompactList}\end{DoxyCompactItemize}

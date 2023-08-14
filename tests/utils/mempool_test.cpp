@@ -44,9 +44,79 @@ TEST(MemPoolTests, AllocatingFullPoolFails) {
     ASSERT_DEATH(pool.allocate(20), "Memory pool out of space.");
 }
 
-TEST(MemPoolTests, ResizePool) {}
+TEST(MemPoolTests, ResizePool) {
+    MemPool pool { MemPool<TestObj>{ 2 } };
+    pool.allocate(20);
+    pool.allocate(50);
 
-TEST(MemPoolTests, ValidDeallocation) {}
+    pool.resize(4);
 
-TEST(MemPoolTests, InvalidDeallocation) {}
+    pool.allocate(20);
+    ASSERT_NO_FATAL_FAILURE(pool.allocate(50));
+}
+
+TEST(MemPoolTests, ValidDeallocation) {
+    MemPool pool { MemPool<TestObj>{ 2 } };
+    auto ptr { pool.allocate(15) };
+
+    // No error here means that deallocating succeeded
+    pool.deallocate(ptr);
+}
+
+TEST(MemPoolTests, InvalidDeallocation) {
+    MemPool pool { MemPool<TestObj>{ 5 } };
+
+    // This object was not allocated inside our pool, so deleting it using pool is illegal
+    TestObj* NotInPool { new TestObj{ 5 } };
+
+    ASSERT_DEATH(pool.deallocate(NotInPool), "Pointer provided doesn't point to something in this pool.");
+
+    // Make sure double deallocation is prevented
+    TestObj* InPool { pool.allocate(1) };
+    pool.deallocate(InPool);
+
+    ASSERT_DEATH(pool.deallocate(InPool), "Attempted to deallocate unallocated entry in pool.");
+}
+
+TEST(MemPoolTests, ObjectReuseAfterDeallocation) {
+    MemPool pool { MemPool<TestObj>{ 5 } };
+    
+    TestObj* obj1 { pool.allocate(5) };
+    pool.deallocate(obj1);
+    
+    TestObj* obj2 { pool.allocate(10) };
+    
+    // obj2 should reuse the memory location of obj1
+    ASSERT_EQ(obj1, obj2);
+    ASSERT_EQ(obj2->getValue(), 10);
+}
+
+TEST(MemPoolTests, PoolExhaustionAndReallocation) {
+    MemPool pool { MemPool<TestObj>{ 2 } };
+    
+    pool.allocate(10);
+    pool.allocate(20);
+    ASSERT_DEATH(pool.allocate(30), "Memory pool out of space.");
+
+    pool.resize(3);
+    TestObj* obj { pool.allocate(30) };
+    ASSERT_EQ(obj->getValue(), 30);
+}
+
+TEST(MemPoolTests, ResizedPoolIntegrity) {
+    MemPool pool { MemPool<TestObj>{ 5 } };
+
+    pool.allocate(10);
+    pool.allocate(20);
+    pool.allocate(30);
+    pool.resize(3);  // Shrinks the pool
+
+    ASSERT_DEATH(pool.allocate(40), "Memory pool out of space.");  // We've filled all slots
+
+    pool.resize(10);  // Expands the pool
+    TestObj* obj { pool.allocate(50) };  // Should succeed
+    ASSERT_EQ(obj->getValue(), 50);
+}
+
+
 

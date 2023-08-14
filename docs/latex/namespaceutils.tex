@@ -1,0 +1,60 @@
+\hypertarget{namespaceutils}{}\doxysection{utils Namespace Reference}
+\label{namespaceutils}\index{utils@{utils}}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceutils_1_1threads}{threads}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}}
+\begin{DoxyCompactList}\small\item\em Dynamically allocated memory pool. A large amount of memory is allocated up front, during construction. Then, you can request chunks of memory from the pool, and this will be much faster as the memory has already been allocated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceutils_ad09a37f0ec1f701d4258a5eabd576279}{ASSERT}} (bool condition, const std\+::string \&message) noexcept
+\begin{DoxyCompactList}\small\item\em Asserts that condition is true, otherwise logs message and exits. Uses branch prediction hints. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceutils_a6d00d8c7eb8d4d57634795894d7e751d}{FATAL}} (const std\+::string \&message) noexcept
+\begin{DoxyCompactList}\small\item\em Log error and exit immediately. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceutils_ad09a37f0ec1f701d4258a5eabd576279}\label{namespaceutils_ad09a37f0ec1f701d4258a5eabd576279}} 
+\index{utils@{utils}!ASSERT@{ASSERT}}
+\index{ASSERT@{ASSERT}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{ASSERT()}{ASSERT()}}
+{\footnotesize\ttfamily void utils\+::\+ASSERT (\begin{DoxyParamCaption}\item[{bool}]{condition,  }\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Asserts that condition is true, otherwise logs message and exits. Uses branch prediction hints. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em condition} & Condition to be tested \\
+\hline
+{\em message} & Message to log to cerr \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceutils_a6d00d8c7eb8d4d57634795894d7e751d}\label{namespaceutils_a6d00d8c7eb8d4d57634795894d7e751d}} 
+\index{utils@{utils}!FATAL@{FATAL}}
+\index{FATAL@{FATAL}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{FATAL()}{FATAL()}}
+{\footnotesize\ttfamily void utils\+::\+FATAL (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Log error and exit immediately. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Message to log \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

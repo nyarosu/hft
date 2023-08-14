@@ -1,0 +1,62 @@
+\hypertarget{namespaceutils_1_1threads}{}\doxysection{utils\+::threads Namespace Reference}
+\label{namespaceutils_1_1threads}\index{utils::threads@{utils::threads}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespaceutils_1_1threads_a55975a27a3a02744a1a971a5ffb301f2}{set\+Thread\+Core}} (int core\+\_\+id) noexcept
+\begin{DoxyCompactList}\small\item\em Set the affinity of the calling thread to the specified core. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Function , typename... Args$>$ }\\std\+::thread \mbox{\hyperlink{namespaceutils_1_1threads_a81ba1ff06fd7ac1a254359ca849a1661}{create\+And\+Start}} (int core\+\_\+id, const std\+::string \&name, Function \&\&func, Args \&\&... args) noexcept
+\begin{DoxyCompactList}\small\item\em Create and start running a new named thread, with affinity set to specified core, and with a given function and arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceutils_1_1threads_a81ba1ff06fd7ac1a254359ca849a1661}\label{namespaceutils_1_1threads_a81ba1ff06fd7ac1a254359ca849a1661}} 
+\index{utils::threads@{utils::threads}!createAndStart@{createAndStart}}
+\index{createAndStart@{createAndStart}!utils::threads@{utils::threads}}
+\doxysubsubsection{\texorpdfstring{createAndStart()}{createAndStart()}}
+{\footnotesize\ttfamily template$<$typename Function , typename... Args$>$ \\
+std\+::thread utils\+::threads\+::create\+And\+Start (\begin{DoxyParamCaption}\item[{int}]{core\+\_\+id,  }\item[{const std\+::string \&}]{name,  }\item[{Function \&\&}]{func,  }\item[{Args \&\&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Create and start running a new named thread, with affinity set to specified core, and with a given function and arguments. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Function} & the type of the function to be called \\
+\hline
+{\em Args} & the types of the arguments to be passed to the function\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em core\+\_\+id} & Affinity of the thread will be set to this core \\
+\hline
+{\em name} & Name given to the thread \\
+\hline
+{\em func} & Function the thread will run \\
+\hline
+{\em args} & Arguments to pass to the function (perfectly forwarded)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new thread 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceutils_1_1threads_a55975a27a3a02744a1a971a5ffb301f2}\label{namespaceutils_1_1threads_a55975a27a3a02744a1a971a5ffb301f2}} 
+\index{utils::threads@{utils::threads}!setThreadCore@{setThreadCore}}
+\index{setThreadCore@{setThreadCore}!utils::threads@{utils::threads}}
+\doxysubsubsection{\texorpdfstring{setThreadCore()}{setThreadCore()}}
+{\footnotesize\ttfamily bool utils\+::threads\+::set\+Thread\+Core (\begin{DoxyParamCaption}\item[{int}]{core\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Set the affinity of the calling thread to the specified core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em core\+\_\+id} & Core ID to set affinity to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, false otherwise 
+\end{DoxyReturn}
