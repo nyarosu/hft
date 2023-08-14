@@ -31,8 +31,8 @@ namespace utils {
             bool is_free { true };
         };
 
-        std::vector<Block> m_data;
-        size_t m_next_free_index { 0 };
+        std::vector<Block> data_;
+        size_t next_free_index_ { 0 };
 
     public:
         /**
@@ -41,10 +41,10 @@ namespace utils {
          * @note T must have a default constructor
          */
         explicit MemPool(int size)
-            : m_data(size, { T(), true }) 
+            : data_(size, { T(), true }) 
         {
             // This assert is required to ensure safety of an efficiency trick used when deallocating - see MemPool::deallocate().
-            ASSERT(reinterpret_cast<const Block*>(&(m_data[0].data)) == &(m_data[0]), "Alignment error; T is not first member of struct.");
+            ASSERT(reinterpret_cast<const Block*>(&(data_[0].data)) == &(data_[0]), "Alignment error; T is not first member of struct.");
         }
         
         // Delete default ctor, copy ctor/assignment, move ctor/assigment as they don't make sense for a memory pool.
@@ -62,8 +62,8 @@ namespace utils {
          * @param new_size New size of pool. Can be larger or smaller than current size.
          */
         void resize(size_t new_size) {
-            m_data.resize(new_size, { T(), true });
-            m_next_free_index = 0;
+            data_.resize(new_size, { T(), true });
+            next_free_index_ = 0;
             updateFreeIndex();
         }
 
@@ -77,7 +77,7 @@ namespace utils {
          */
         template<typename... Args>
         T* allocate(Args... args) noexcept {
-            Block* ptr { &(m_data[m_next_free_index]) };
+            Block* ptr { &(data_[next_free_index_]) };
             ASSERT(ptr->is_free, "Memory pool out of space.");
         
             T* obj { &(ptr->data) };
@@ -97,14 +97,14 @@ namespace utils {
          * @param elem Pointer to the element to be deallocated
          */
         void deallocate(const T* elem) noexcept {
-            auto index { reinterpret_cast<const Block*>(elem) - &m_data[0] };
+            auto index { reinterpret_cast<const Block*>(elem) - &data_[0] };
             
             // If the given pointer doesn't point to an element within the pool, this index will be out of bounds
-            ASSERT(index >= 0 && index < m_data.size(), "Pointer provided doesn't point to something in this pool.");
+            ASSERT(index >= 0 && index < data_.size(), "Pointer provided doesn't point to something in this pool.");
             
-            ASSERT(!m_data[index].is_free, "Attempted to deallocate unallocated entry in pool.");
-            m_data[index].is_free = true;
-            m_next_free_index = index;
+            ASSERT(!data_[index].is_free, "Attempted to deallocate unallocated entry in pool.");
+            data_[index].is_free = true;
+            next_free_index_ = index;
         };
 
     private:
@@ -114,18 +114,19 @@ namespace utils {
          * The idea is to start from the initial index and walk forward, trying to find a free block, since that's where we are most likely to find a free block.
          * If we don't find one, we start from 0 (maybe something was deallocated) and walk up to initial_free_index.
          * If we still don't find one, the memory pool is full and we log a fatal error.
+         * @todo find more efficient implementation
          */
         void updateFreeIndex() noexcept {
-            const auto initial_free_index = m_next_free_index;
-            const size_t total_size = m_data.size();
+            const auto initial_free_index = next_free_index_;
+            const size_t total_size = data_.size();
 
             for (size_t count = 0; count < total_size; ++count) {
-                if (m_data[m_next_free_index].is_free) {
+                if (data_[next_free_index_].is_free) {
                     return; // found a free index, early exit
                 }
 
                 // Use modulo to wrap around to the beginning when we reach the end
-                m_next_free_index = (m_next_free_index + 1) % total_size;
+                next_free_index_ = (next_free_index_ + 1) % total_size;
             }
         }
 

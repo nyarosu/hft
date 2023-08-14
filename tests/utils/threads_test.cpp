@@ -7,7 +7,7 @@ int getRandCore();
 /**
  * @brief Test that threads are successfully created and execute passed function with passed arguments
  */
-TEST(Threads, ThreadsAreCreatedAndRun)
+TEST(ThreadsTests, ThreadsAreCreatedAndRun)
 {
     const int CORE_ID{getRandCore()};
 
@@ -24,7 +24,7 @@ TEST(Threads, ThreadsAreCreatedAndRun)
 /**
  * @brief Test that threads are set to provided affinity
  */
-TEST(Threads, ThreadsHaveCorrectAffinity)
+TEST(ThreadsTests, ThreadsHaveCorrectAffinity)
 {
     const int CORE_ID{getRandCore()};
 
