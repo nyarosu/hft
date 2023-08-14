@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['main_7',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
-  ['main_2ecpp_8',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['mempool_9',['MemPool',['../classutils_1_1MemPool.html#a4185375baa1d70c8b6ab92313e40b55c',1,'utils::MemPool::MemPool(int size)'],['../classutils_1_1MemPool.html#ae4c6a323a11405f574db34f1632a4f1a',1,'utils::MemPool::MemPool()=delete'],['../classutils_1_1MemPool.html#a76e2fb3bb9bd91456a3a392b495fe88a',1,'utils::MemPool::MemPool(const MemPool &amp;)=delete'],['../classutils_1_1MemPool.html#a80fcb19715166557d80f4d9392b2e9ad',1,'utils::MemPool::MemPool(MemPool &amp;&amp;)=delete'],['../classutils_1_1MemPool.html',1,'utils::MemPool&lt; T &gt;']]],
-  ['mempool_2ehpp_10',['mempool.hpp',['../mempool_8hpp.html',1,'']]]
+  ['getnextread_7',['getNextRead',['../classlfds_1_1SPSCQueue.html#ac9b868c04be50bd8c0c080c101bd5d37',1,'lfds::SPSCQueue']]],
+  ['getnextwriteto_8',['getNextWriteTo',['../classlfds_1_1SPSCQueue.html#a2d996403cc0b155fca19648384e5c773',1,'lfds::SPSCQueue']]]
 ];

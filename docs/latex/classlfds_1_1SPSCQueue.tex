@@ -1,0 +1,202 @@
+\hypertarget{classlfds_1_1SPSCQueue}{}\doxysection{lfds\+::SPSCQueue$<$ T $>$ Class Template Reference}
+\label{classlfds_1_1SPSCQueue}\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+
+
+A lock free, low overhead, single producer/consumer queue. No locks of any kind are used, so no locking/context switch overhead. This is achieved using atomic variables.  
+
+
+
+
+{\ttfamily \#include $<$spscqueue.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlfds_1_1SPSCQueue_af2e63f98b8c2e748d95330dbdcf53564}{SPSCQueue}} (std\+::size\+\_\+t \mbox{\hyperlink{classlfds_1_1SPSCQueue_a8ed7468492e5f5618249b0080c44cce3}{size}})
+\begin{DoxyCompactList}\small\item\em Create new SPSC queue, with given size and all elements default constructed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlfds_1_1SPSCQueue_a9bf133471a6ab9abc027bee4510c049a}{SPSCQueue}} ()=delete
+\item 
+\mbox{\hyperlink{classlfds_1_1SPSCQueue_a7d92d52738697f8d33d8f5998c4264fe}{SPSCQueue}} (const \mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} \&)=delete
+\item 
+\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} \& \mbox{\hyperlink{classlfds_1_1SPSCQueue_afba8cd068507208baa02ee6b5d49a479}{operator=}} (const \mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} \&)=delete
+\item 
+\mbox{\hyperlink{classlfds_1_1SPSCQueue_ae0f7a6abe39dce756e20db5e650d41c5}{SPSCQueue}} (\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} \&\&)=delete
+\item 
+\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} \& \mbox{\hyperlink{classlfds_1_1SPSCQueue_a3b80a575678abf7cf8e4217f5ab19401}{operator=}} (\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} \&\&)=delete
+\item 
+void \mbox{\hyperlink{classlfds_1_1SPSCQueue_aa56bdec6bcbe62b24be3167829217797}{resize}} (std\+::size\+\_\+t new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Resize the queue to a new size. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classlfds_1_1SPSCQueue_a8ed7468492e5f5618249b0080c44cce3}{size}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the number of elements in the queue. Not just how many were allocated, how many have actually been written. \end{DoxyCompactList}\item 
+T $\ast$ \mbox{\hyperlink{classlfds_1_1SPSCQueue_a2d996403cc0b155fca19648384e5c773}{get\+Next\+Write\+To}} () noexcept
+\begin{DoxyCompactList}\small\item\em Get a pointer to the next element to write to. Object is already either default constructed or has prior value from an earlier call. Needs to be implemented this way (two methods) due to atomics. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlfds_1_1SPSCQueue_ae6d9aab86da416b3410fac44348dc960}{update\+Write\+Index}} () noexcept
+\begin{DoxyCompactList}\small\item\em Increment write index, wrapping around if required. Also increments size of queue. \end{DoxyCompactList}\item 
+T $\ast$ \mbox{\hyperlink{classlfds_1_1SPSCQueue_ac9b868c04be50bd8c0c080c101bd5d37}{get\+Next\+Read}} () noexcept
+\begin{DoxyCompactList}\small\item\em Get a pointer to the next object to be read. Needs to be implemented this way (two methods) due to atomics. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlfds_1_1SPSCQueue_ac55294b1a91ae1aee1f7f6b36ecb22a7}{update\+Read\+Index}} () noexcept
+\begin{DoxyCompactList}\small\item\em Increment the read index, decrement size of the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class lfds\+::\+SPSCQueue$<$ T $>$}
+
+A lock free, low overhead, single producer/consumer queue. No locks of any kind are used, so no locking/context switch overhead. This is achieved using atomic variables. 
+
+\begin{DoxyNote}{Note}
+Storage for queue is dynamically allocated at construction 
+\end{DoxyNote}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of objects contained by the queue \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_af2e63f98b8c2e748d95330dbdcf53564}\label{classlfds_1_1SPSCQueue_af2e63f98b8c2e748d95330dbdcf53564}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!SPSCQueue@{SPSCQueue}}
+\index{SPSCQueue@{SPSCQueue}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{SPSCQueue()}{SPSCQueue()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Create new SPSC queue, with given size and all elements default constructed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Number of elements to dynamically allocate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_a9bf133471a6ab9abc027bee4510c049a}\label{classlfds_1_1SPSCQueue_a9bf133471a6ab9abc027bee4510c049a}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!SPSCQueue@{SPSCQueue}}
+\index{SPSCQueue@{SPSCQueue}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{SPSCQueue()}{SPSCQueue()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_a7d92d52738697f8d33d8f5998c4264fe}\label{classlfds_1_1SPSCQueue_a7d92d52738697f8d33d8f5998c4264fe}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!SPSCQueue@{SPSCQueue}}
+\index{SPSCQueue@{SPSCQueue}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{SPSCQueue()}{SPSCQueue()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}}$<$ T $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_ae0f7a6abe39dce756e20db5e650d41c5}\label{classlfds_1_1SPSCQueue_ae0f7a6abe39dce756e20db5e650d41c5}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!SPSCQueue@{SPSCQueue}}
+\index{SPSCQueue@{SPSCQueue}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{SPSCQueue()}{SPSCQueue()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}}$<$ T $>$ \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_ac9b868c04be50bd8c0c080c101bd5d37}\label{classlfds_1_1SPSCQueue_ac9b868c04be50bd8c0c080c101bd5d37}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!getNextRead@{getNextRead}}
+\index{getNextRead@{getNextRead}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getNextRead()}{getNextRead()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T$\ast$ \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::get\+Next\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get a pointer to the next object to be read. Needs to be implemented this way (two methods) due to atomics. 
+
+\begin{DoxyNote}{Note}
+Remember to call \mbox{\hyperlink{classlfds_1_1SPSCQueue_ac55294b1a91ae1aee1f7f6b36ecb22a7}{update\+Read\+Index()}} after reading! 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+T$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_a2d996403cc0b155fca19648384e5c773}\label{classlfds_1_1SPSCQueue_a2d996403cc0b155fca19648384e5c773}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!getNextWriteTo@{getNextWriteTo}}
+\index{getNextWriteTo@{getNextWriteTo}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getNextWriteTo()}{getNextWriteTo()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T$\ast$ \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::get\+Next\+Write\+To (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get a pointer to the next element to write to. Object is already either default constructed or has prior value from an earlier call. Needs to be implemented this way (two methods) due to atomics. 
+
+\begin{DoxyNote}{Note}
+Remember to call \mbox{\hyperlink{classlfds_1_1SPSCQueue_ae6d9aab86da416b3410fac44348dc960}{update\+Write\+Index()}} after writing! 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+T$\ast$ -\/ pointer to element. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_afba8cd068507208baa02ee6b5d49a479}\label{classlfds_1_1SPSCQueue_afba8cd068507208baa02ee6b5d49a479}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}}\& \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}}$<$ T $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_a3b80a575678abf7cf8e4217f5ab19401}\label{classlfds_1_1SPSCQueue_a3b80a575678abf7cf8e4217f5ab19401}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}}\& \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}}$<$ T $>$ \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_aa56bdec6bcbe62b24be3167829217797}\label{classlfds_1_1SPSCQueue_aa56bdec6bcbe62b24be3167829217797}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!resize@{resize}}
+\index{resize@{resize}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::resize (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{new\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resize the queue to a new size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+size} & new size of queue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_a8ed7468492e5f5618249b0080c44cce3}\label{classlfds_1_1SPSCQueue_a8ed7468492e5f5618249b0080c44cce3}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!size@{size}}
+\index{size@{size}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get the number of elements in the queue. Not just how many were allocated, how many have actually been written. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_ac55294b1a91ae1aee1f7f6b36ecb22a7}\label{classlfds_1_1SPSCQueue_ac55294b1a91ae1aee1f7f6b36ecb22a7}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!updateReadIndex@{updateReadIndex}}
+\index{updateReadIndex@{updateReadIndex}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{updateReadIndex()}{updateReadIndex()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::update\+Read\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Increment the read index, decrement size of the queue. 
+
+\mbox{\Hypertarget{classlfds_1_1SPSCQueue_ae6d9aab86da416b3410fac44348dc960}\label{classlfds_1_1SPSCQueue_ae6d9aab86da416b3410fac44348dc960}} 
+\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!updateWriteIndex@{updateWriteIndex}}
+\index{updateWriteIndex@{updateWriteIndex}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{updateWriteIndex()}{updateWriteIndex()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::update\+Write\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Increment write index, wrapping around if required. Also increments size of queue. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/nyarosu/repos/hft/src/libs/lfds/\mbox{\hyperlink{spscqueue_8hpp}{spscqueue.\+hpp}}\end{DoxyCompactItemize}

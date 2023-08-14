@@ -1,0 +1,11 @@
+digraph "/home/nyarosu/repos/hft/src" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_68267d1309a1af8e8297ef4c3efbcdba {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_68267d1309a1af8e8297ef4c3efbcdba.html"];
+    dir_68267d1309a1af8e8297ef4c3efbcdba [shape=plaintext label="src"];
+  dir_5194e5fea318fda12687127c23f8aba1 [shape=box label="app" fillcolor="white" style="filled" URL="dir_5194e5fea318fda12687127c23f8aba1.html"];
+  dir_87a455bccb09a92130c26a11a880c98a [shape=box label="libs" fillcolor="white" style="filled" color="red" URL="dir_87a455bccb09a92130c26a11a880c98a.html"];
+  }
+}

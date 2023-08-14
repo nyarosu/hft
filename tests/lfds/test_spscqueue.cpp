@@ -70,7 +70,7 @@ TEST(SPSCQueueTests, OrderingOfElements) {
 
 TEST(SPSCQueueTests, BasicMultithreadedProducerConsumer) {
     const int NUM_ITEMS { 50 };
-    SPSCQueue<int> queue { NUM_ITEMS * 2 };  // create a queue of a sufficient size
+    SPSCQueue<int> queue { NUM_ITEMS }; 
 
     // Producer function
     auto producerFunc = [&queue]() {
@@ -79,7 +79,7 @@ TEST(SPSCQueueTests, BasicMultithreadedProducerConsumer) {
             *write_ptr = i;
             queue.updateWriteIndex();
 
-            std::this_thread::sleep_for(std::chrono::microseconds(1));  // Simulate some work
+            std::this_thread::sleep_for(std::chrono::microseconds(1));
         }
     };
 
@@ -93,7 +93,8 @@ TEST(SPSCQueueTests, BasicMultithreadedProducerConsumer) {
                     queue.updateReadIndex();
                     break;
                 }
-                std::this_thread::sleep_for(std::chrono::microseconds(1));  // Wait and try again
+                // Too early to read, try again after waiting
+                std::this_thread::sleep_for(std::chrono::microseconds(1)); 
             }
         }
     };
@@ -103,8 +104,4 @@ TEST(SPSCQueueTests, BasicMultithreadedProducerConsumer) {
 
     producerThread.join();
     consumerThread.join();
-}
-
-TEST(SPSCQueueTests, AdvancedMultithreadedProducerConsumer) {
-    
 }

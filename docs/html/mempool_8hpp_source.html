@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HFT: /home/nyarosu/repos/hft/src/utils/mempool/mempool.hpp Source File</title>
+<title>HFT: /home/nyarosu/repos/hft/src/libs/utils/mempool/mempool.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_313caf1132e152dd9b58bea13a4052ca.html">utils</a></li><li class="navelem"><a class="el" href="dir_c00d915fb656a5715c5c3cd63555f2cb.html">mempool</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_87a455bccb09a92130c26a11a880c98a.html">libs</a></li><li class="navelem"><a class="el" href="dir_0613198e77a9b173fe3ff0a50633b455.html">utils</a></li><li class="navelem"><a class="el" href="dir_678daeee21a43e7674ea46faab73434f.html">mempool</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -87,15 +87,15 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordtype">bool</span> is_free { <span class="keyword">true</span> };</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        };</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        std::vector&lt;Block&gt; m_data;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">size_t</span> m_next_free_index { 0 };</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        std::vector&lt;Block&gt; data_;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">size_t</span> next_free_index_ { 0 };</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classutils_1_1MemPool.html#a4185375baa1d70c8b6ab92313e40b55c">   43</a></span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classutils_1_1MemPool.html#a4185375baa1d70c8b6ab92313e40b55c">MemPool</a>(<span class="keywordtype">int</span> size)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            : m_data(size, { T(), <span class="keyword">true</span> }) </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            : data_(size, { T(), <span class="keyword">true</span> }) </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="comment">// This assert is required to ensure safety of an efficiency trick used when deallocating - see MemPool::deallocate().</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <a class="code" href="namespaceutils.html#ad09a37f0ec1f701d4258a5eabd576279">ASSERT</a>(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>Block*<span class="keyword">&gt;</span>(&amp;(m_data[0].data)) == &amp;(m_data[0]), <span class="stringliteral">&quot;Alignment error; T is not first member of struct.&quot;</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <a class="code" href="namespaceutils.html#ad09a37f0ec1f701d4258a5eabd576279">ASSERT</a>(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>Block*<span class="keyword">&gt;</span>(&amp;(data_[0].data)) == &amp;(data_[0]), <span class="stringliteral">&quot;Alignment error; T is not first member of struct.&quot;</span>);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// Delete default ctor, copy ctor/assignment, move ctor/assigment as they don&#39;t make sense for a memory pool.</span></div>
@@ -108,15 +108,15 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classutils_1_1MemPool.html#a5d4c581ffd92bc0fdcb0582c2531d1ec">   57</a></span>&#160;        <a class="code" href="classutils_1_1MemPool.html">MemPool</a>&amp; <a class="code" href="classutils_1_1MemPool.html#a5d4c581ffd92bc0fdcb0582c2531d1ec">operator=</a>(<a class="code" href="classutils_1_1MemPool.html">MemPool</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classutils_1_1MemPool.html#a52e6cae15a56b6c662d9063e78f6f3e5">   64</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classutils_1_1MemPool.html#a52e6cae15a56b6c662d9063e78f6f3e5">resize</a>(<span class="keywordtype">size_t</span> new_size) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            m_data.resize(new_size, { T(), <span class="keyword">true</span> });</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            m_next_free_index = 0;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            data_.resize(new_size, { T(), <span class="keyword">true</span> });</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            next_free_index_ = 0;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            updateFreeIndex();</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classutils_1_1MemPool.html#a6a6561afbd5461d8a7582f34f79d229e">   79</a></span>&#160;        T* <a class="code" href="classutils_1_1MemPool.html#a6a6561afbd5461d8a7582f34f79d229e">allocate</a>(Args... args) noexcept {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            Block* ptr { &amp;(m_data[m_next_free_index]) };</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            Block* ptr { &amp;(data_[next_free_index_]) };</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="namespaceutils.html#ad09a37f0ec1f701d4258a5eabd576279">ASSERT</a>(ptr-&gt;is_free, <span class="stringliteral">&quot;Memory pool out of space.&quot;</span>);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            T* obj { &amp;(ptr-&gt;data) };</div>
@@ -130,33 +130,33 @@ $(function() {
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
 <div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classutils_1_1MemPool.html#a85cd84bda4f85d880b40d48a9b4379f4">   99</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classutils_1_1MemPool.html#a85cd84bda4f85d880b40d48a9b4379f4">deallocate</a>(<span class="keyword">const</span> T* elem) noexcept {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keyword">auto</span> index { <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>Block*<span class="keyword">&gt;</span>(elem) - &amp;m_data[0] };</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keyword">auto</span> index { <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>Block*<span class="keyword">&gt;</span>(elem) - &amp;data_[0] };</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            </div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="comment">// If the given pointer doesn&#39;t point to an element within the pool, this index will be out of bounds</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <a class="code" href="namespaceutils.html#ad09a37f0ec1f701d4258a5eabd576279">ASSERT</a>(index &gt;= 0 &amp;&amp; index &lt; m_data.size(), <span class="stringliteral">&quot;Pointer provided doesn&#39;t point to something in this pool.&quot;</span>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <a class="code" href="namespaceutils.html#ad09a37f0ec1f701d4258a5eabd576279">ASSERT</a>(index &gt;= 0 &amp;&amp; index &lt; data_.size(), <span class="stringliteral">&quot;Pointer provided doesn&#39;t point to something in this pool.&quot;</span>);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <a class="code" href="namespaceutils.html#ad09a37f0ec1f701d4258a5eabd576279">ASSERT</a>(!m_data[index].is_free, <span class="stringliteral">&quot;Attempted to deallocate unallocated entry in pool.&quot;</span>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            m_data[index].is_free = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            m_next_free_index = index;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <a class="code" href="namespaceutils.html#ad09a37f0ec1f701d4258a5eabd576279">ASSERT</a>(!data_[index].is_free, <span class="stringliteral">&quot;Attempted to deallocate unallocated entry in pool.&quot;</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            data_[index].is_free = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            next_free_index_ = index;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        };</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordtype">void</span> updateFreeIndex() noexcept {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> initial_free_index = m_next_free_index;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">size_t</span> total_size = m_data.size();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> count = 0; count &lt; total_size; ++count) {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                <span class="keywordflow">if</span> (m_data[m_next_free_index].is_free) {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    <span class="keywordflow">return</span>; <span class="comment">// found a free index, early exit</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="comment">// Use modulo to wrap around to the beginning when we reach the end</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                m_next_free_index = (m_next_free_index + 1) % total_size;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    };</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordtype">void</span> updateFreeIndex() noexcept {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> initial_free_index = next_free_index_;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">size_t</span> total_size = data_.size();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> count = 0; count &lt; total_size; ++count) {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <span class="keywordflow">if</span> (data_[next_free_index_].is_free) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                    <span class="keywordflow">return</span>; <span class="comment">// found a free index, early exit</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="comment">// Use modulo to wrap around to the beginning when we reach the end</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                next_free_index_ = (next_free_index_ + 1) % total_size;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    };</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
 <div class="ttc" id="aassertions_8hpp_html"><div class="ttname"><a href="assertions_8hpp.html">assertions.hpp</a></div></div>
 <div class="ttc" id="aclassutils_1_1MemPool_html"><div class="ttname"><a href="classutils_1_1MemPool.html">utils::MemPool</a></div><div class="ttdoc">Dynamically allocated memory pool. A large amount of memory is allocated up front,...</div><div class="ttdef"><b>Definition:</b> mempool.hpp:26</div></div>
 <div class="ttc" id="aclassutils_1_1MemPool_html_a4185375baa1d70c8b6ab92313e40b55c"><div class="ttname"><a href="classutils_1_1MemPool.html#a4185375baa1d70c8b6ab92313e40b55c">utils::MemPool::MemPool</a></div><div class="ttdeci">MemPool(int size)</div><div class="ttdoc">Create a new memory pool. Pool is initialized with all elements default constructed and marked as fre...</div><div class="ttdef"><b>Definition:</b> mempool.hpp:43</div></div>

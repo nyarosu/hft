@@ -1,0 +1,40 @@
+\hypertarget{spscqueue_8hpp}{}\doxysection{/home/nyarosu/repos/hft/src/libs/lfds/spscqueue.hpp File Reference}
+\label{spscqueue_8hpp}\index{/home/nyarosu/repos/hft/src/libs/lfds/spscqueue.hpp@{/home/nyarosu/repos/hft/src/libs/lfds/spscqueue.hpp}}
+
+
+Single producer, single consumer, lock free queue.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include \char`\"{}assertions.\+hpp\char`\"{}}\newline
+Include dependency graph for spscqueue.\+hpp\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em A lock free, low overhead, single producer/consumer queue. No locks of any kind are used, so no locking/context switch overhead. This is achieved using atomic variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacelfds}{lfds}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Single producer, single consumer, lock free queue. 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/08-\/14 
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000001}{Test}}]tests/lfds/spscqueue\+\_\+test.\+cpp\end{DoxyRefDesc}
+
+
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}

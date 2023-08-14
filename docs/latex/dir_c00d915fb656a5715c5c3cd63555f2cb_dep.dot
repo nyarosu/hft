@@ -1,9 +1,0 @@
-digraph "/home/nyarosu/repos/hft/src/utils/mempool" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_313caf1132e152dd9b58bea13a4052ca {
-    graph [ bgcolor="#ddddee", pencolor="black", label="utils" fontname="Helvetica", fontsize="10", URL="dir_313caf1132e152dd9b58bea13a4052ca.html"]
-  dir_c00d915fb656a5715c5c3cd63555f2cb [shape=box, label="mempool", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_c00d915fb656a5715c5c3cd63555f2cb.html"];
-  }
-}
