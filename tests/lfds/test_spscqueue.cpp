@@ -4,7 +4,7 @@
 
 using namespace lfds;
 
-// Basic Creation and Write/Read
+// Simple creation, write/read
 TEST(SPSCQueueTests, CreateSPSCQueue) {
     SPSCQueue<std::string> queue { 5 };
 
@@ -22,13 +22,13 @@ TEST(SPSCQueueTests, CreateSPSCQueue) {
     queue.updateReadIndex();
 }
 
-// Read from Empty Queue
+// Reading from an empty queue should fail (return nullptr)
 TEST(SPSCQueueTests, ReadFromEmptyQueue) {
     SPSCQueue<std::string> queue { 5 };
     ASSERT_EQ(queue.getNextRead(), nullptr);
 }
 
-// Wrap-around Behavior
+// Wrap around to writing at 0 when queue is full
 TEST(SPSCQueueTests, WrapAroundBehavior) {
     SPSCQueue<int> queue { 3 };
 
@@ -50,7 +50,7 @@ TEST(SPSCQueueTests, WrapAroundBehavior) {
     ASSERT_EQ(*read_ptr, 2);  // Expecting the 3rd element, which is 2
 }
 
-// Ordering of Multiple Writes/Reads
+// Queue should read/write in the correct order
 TEST(SPSCQueueTests, OrderingOfElements) {
     SPSCQueue<std::string> queue { 4 };
     std::vector<std::string> test_strings = {"one", "two", "three", "four"};
@@ -68,6 +68,7 @@ TEST(SPSCQueueTests, OrderingOfElements) {
     }
 }
 
+// Simple multithreaded scenario
 TEST(SPSCQueueTests, BasicMultithreadedProducerConsumer) {
     const int NUM_ITEMS { 50 };
     SPSCQueue<int> queue { NUM_ITEMS }; 
