@@ -1,0 +1,87 @@
+\hypertarget{namespacelogger}{}\doxysection{logger Namespace Reference}
+\label{namespacelogger}\index{logger@{logger}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlogger_1_1LogElement}{Log\+Element}}
+\begin{DoxyCompactList}\small\item\em One log element. Uses union to represent the fact that it could contain any one of those types. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classlogger_1_1Logger}{Logger}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classlogger_1_1Logger}{Logger}} class to log to a file. Runs on a background thread for performance reasons. Communicates with main threads via lock free SPSC queue -\/ main threads write data to the queue, logger reads and writes to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3}{Log\+Type}} \+: int8\+\_\+t \{ \newline
+\mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a027acd3aa6b1dd7f26119d3cf0f9a063}{CHAR}} = 0
+, \mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a5d5cd46919fa987731fb2edefe0f2a0c}{INTEGER}} = 1
+, \mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a070b8142eb90eb66296bba45247d686c}{LONG\+\_\+\+INTEGER}} = 2
+, \mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a9bd9abdbea7816c595f6fe5c2d4bb876}{LONG\+\_\+\+LONG\+\_\+\+INTEGER}} = 3
+, \newline
+\mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a0d43f06f739ff6d3482b2ca04f46f6bd}{UNSIGNED\+\_\+\+INTEGER}} = 4
+, \mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3af05d9e25269783f0dac08cafe7093a8b}{UNSIGNED\+\_\+\+LONG\+\_\+\+INTEGER}} = 5
+, \mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a0dfde179647bf78839c2d9eaa7fe8219}{UNSIGNED\+\_\+\+LONG\+\_\+\+LONG\+\_\+\+INTEGER}} = 6
+, \mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3ae738c26bf4ce1037fa81b039a915cbf6}{FLOAT}} = 7
+, \newline
+\mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3afd3e4ece78a7d422280d5ed379482229}{DOUBLE}} = 8
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr size\+\_\+t \mbox{\hyperlink{namespacelogger_a52830a5ea93708b2d4264487b814b90a}{LOG\+\_\+\+QUEUE\+\_\+\+SIZE}} \{ 8 $\ast$ 1024 $\ast$ 1024 \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3}\label{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3}} 
+\index{logger@{logger}!LogType@{LogType}}
+\index{LogType@{LogType}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{LogType}{LogType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3}{logger\+::\+Log\+Type}} \+: int8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CHAR@{CHAR}!logger@{logger}}\index{logger@{logger}!CHAR@{CHAR}}}\mbox{\Hypertarget{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a027acd3aa6b1dd7f26119d3cf0f9a063}\label{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a027acd3aa6b1dd7f26119d3cf0f9a063}} 
+CHAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INTEGER@{INTEGER}!logger@{logger}}\index{logger@{logger}!INTEGER@{INTEGER}}}\mbox{\Hypertarget{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a5d5cd46919fa987731fb2edefe0f2a0c}\label{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a5d5cd46919fa987731fb2edefe0f2a0c}} 
+INTEGER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LONG\_INTEGER@{LONG\_INTEGER}!logger@{logger}}\index{logger@{logger}!LONG\_INTEGER@{LONG\_INTEGER}}}\mbox{\Hypertarget{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a070b8142eb90eb66296bba45247d686c}\label{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a070b8142eb90eb66296bba45247d686c}} 
+LONG\+\_\+\+INTEGER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LONG\_LONG\_INTEGER@{LONG\_LONG\_INTEGER}!logger@{logger}}\index{logger@{logger}!LONG\_LONG\_INTEGER@{LONG\_LONG\_INTEGER}}}\mbox{\Hypertarget{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a9bd9abdbea7816c595f6fe5c2d4bb876}\label{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a9bd9abdbea7816c595f6fe5c2d4bb876}} 
+LONG\+\_\+\+LONG\+\_\+\+INTEGER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNSIGNED\_INTEGER@{UNSIGNED\_INTEGER}!logger@{logger}}\index{logger@{logger}!UNSIGNED\_INTEGER@{UNSIGNED\_INTEGER}}}\mbox{\Hypertarget{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a0d43f06f739ff6d3482b2ca04f46f6bd}\label{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a0d43f06f739ff6d3482b2ca04f46f6bd}} 
+UNSIGNED\+\_\+\+INTEGER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNSIGNED\_LONG\_INTEGER@{UNSIGNED\_LONG\_INTEGER}!logger@{logger}}\index{logger@{logger}!UNSIGNED\_LONG\_INTEGER@{UNSIGNED\_LONG\_INTEGER}}}\mbox{\Hypertarget{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3af05d9e25269783f0dac08cafe7093a8b}\label{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3af05d9e25269783f0dac08cafe7093a8b}} 
+UNSIGNED\+\_\+\+LONG\+\_\+\+INTEGER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNSIGNED\_LONG\_LONG\_INTEGER@{UNSIGNED\_LONG\_LONG\_INTEGER}!logger@{logger}}\index{logger@{logger}!UNSIGNED\_LONG\_LONG\_INTEGER@{UNSIGNED\_LONG\_LONG\_INTEGER}}}\mbox{\Hypertarget{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a0dfde179647bf78839c2d9eaa7fe8219}\label{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3a0dfde179647bf78839c2d9eaa7fe8219}} 
+UNSIGNED\+\_\+\+LONG\+\_\+\+LONG\+\_\+\+INTEGER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLOAT@{FLOAT}!logger@{logger}}\index{logger@{logger}!FLOAT@{FLOAT}}}\mbox{\Hypertarget{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3ae738c26bf4ce1037fa81b039a915cbf6}\label{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3ae738c26bf4ce1037fa81b039a915cbf6}} 
+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOUBLE@{DOUBLE}!logger@{logger}}\index{logger@{logger}!DOUBLE@{DOUBLE}}}\mbox{\Hypertarget{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3afd3e4ece78a7d422280d5ed379482229}\label{namespacelogger_ade3836e03aa47697e10e3dc1b5fbd1c3afd3e4ece78a7d422280d5ed379482229}} 
+DOUBLE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacelogger_a52830a5ea93708b2d4264487b814b90a}\label{namespacelogger_a52830a5ea93708b2d4264487b814b90a}} 
+\index{logger@{logger}!LOG\_QUEUE\_SIZE@{LOG\_QUEUE\_SIZE}}
+\index{LOG\_QUEUE\_SIZE@{LOG\_QUEUE\_SIZE}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{LOG\_QUEUE\_SIZE}{LOG\_QUEUE\_SIZE}}
+{\footnotesize\ttfamily constexpr size\+\_\+t logger\+::\+LOG\+\_\+\+QUEUE\+\_\+\+SIZE \{ 8 $\ast$ 1024 $\ast$ 1024 \}\hspace{0.3cm}{\ttfamily [constexpr]}}
+

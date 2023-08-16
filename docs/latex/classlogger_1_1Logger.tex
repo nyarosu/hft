@@ -1,0 +1,98 @@
+\hypertarget{classlogger_1_1Logger}{}\doxysection{logger\+::Logger Class Reference}
+\label{classlogger_1_1Logger}\index{logger::Logger@{logger::Logger}}
+
+
+\mbox{\hyperlink{classlogger_1_1Logger}{Logger}} class to log to a file. Runs on a background thread for performance reasons. Communicates with main threads via lock free SPSC queue -\/ main threads write data to the queue, logger reads and writes to a file.  
+
+
+
+
+{\ttfamily \#include $<$logger.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlogger_1_1Logger_a69998f7f70afc2b8637364f96ff1378a}{Logger}} (const std\+::string \&file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Construct a new logger. Constructing immediately starts listening on the queue for incoming messages and writing to the file specified by file\+\_\+name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlogger_1_1Logger_aa85a309d218f9f006600cbaf2a348f52}{$\sim$\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Wait for the queue to be emptied by the background thread. Then, set running to false and join background thread (wait until it finishes cleaning up). Last, close the file and then return. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlogger_1_1Logger_ad5affb2d6011eb2cd807c43516fd0f56}{Logger}} ()=delete
+\item 
+\mbox{\hyperlink{classlogger_1_1Logger_a9bdf03175e5d2c66c6d8f46f5fb24fae}{Logger}} (const \mbox{\hyperlink{classlogger_1_1Logger}{Logger}} \&)=delete
+\item 
+\mbox{\hyperlink{classlogger_1_1Logger_a74166dee8004bde187744623db3ec843}{Logger}} (\mbox{\hyperlink{classlogger_1_1Logger}{Logger}} \&\&)=delete
+\item 
+\mbox{\hyperlink{classlogger_1_1Logger}{Logger}} \& \mbox{\hyperlink{classlogger_1_1Logger_a79785b731c44dff0a2802e57bd55dcce}{operator=}} (const \mbox{\hyperlink{classlogger_1_1Logger}{Logger}} \&)=delete
+\item 
+\mbox{\hyperlink{classlogger_1_1Logger}{Logger}} \& \mbox{\hyperlink{classlogger_1_1Logger_a4b6ad847a0db73960e447cbb07fb649a}{operator=}} (\mbox{\hyperlink{classlogger_1_1Logger}{Logger}} \&\&)=delete
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classlogger_1_1Logger}{Logger}} class to log to a file. Runs on a background thread for performance reasons. Communicates with main threads via lock free SPSC queue -\/ main threads write data to the queue, logger reads and writes to a file. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlogger_1_1Logger_a69998f7f70afc2b8637364f96ff1378a}\label{classlogger_1_1Logger_a69998f7f70afc2b8637364f96ff1378a}} 
+\index{logger::Logger@{logger::Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!logger::Logger@{logger::Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily logger\+::\+Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a new logger. Constructing immediately starts listening on the queue for incoming messages and writing to the file specified by file\+\_\+name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & File to write logs to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlogger_1_1Logger_aa85a309d218f9f006600cbaf2a348f52}\label{classlogger_1_1Logger_aa85a309d218f9f006600cbaf2a348f52}} 
+\index{logger::Logger@{logger::Logger}!````~Logger@{$\sim$Logger}}
+\index{````~Logger@{$\sim$Logger}!logger::Logger@{logger::Logger}}
+\doxysubsubsection{\texorpdfstring{$\sim$Logger()}{~Logger()}}
+{\footnotesize\ttfamily logger\+::\+Logger\+::$\sim$\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Wait for the queue to be emptied by the background thread. Then, set running to false and join background thread (wait until it finishes cleaning up). Last, close the file and then return. 
+
+\mbox{\Hypertarget{classlogger_1_1Logger_ad5affb2d6011eb2cd807c43516fd0f56}\label{classlogger_1_1Logger_ad5affb2d6011eb2cd807c43516fd0f56}} 
+\index{logger::Logger@{logger::Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!logger::Logger@{logger::Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily logger\+::\+Logger\+::\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classlogger_1_1Logger_a9bdf03175e5d2c66c6d8f46f5fb24fae}\label{classlogger_1_1Logger_a9bdf03175e5d2c66c6d8f46f5fb24fae}} 
+\index{logger::Logger@{logger::Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!logger::Logger@{logger::Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily logger\+::\+Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlogger_1_1Logger}{Logger}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classlogger_1_1Logger_a74166dee8004bde187744623db3ec843}\label{classlogger_1_1Logger_a74166dee8004bde187744623db3ec843}} 
+\index{logger::Logger@{logger::Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!logger::Logger@{logger::Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily logger\+::\+Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlogger_1_1Logger}{Logger}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlogger_1_1Logger_a79785b731c44dff0a2802e57bd55dcce}\label{classlogger_1_1Logger_a79785b731c44dff0a2802e57bd55dcce}} 
+\index{logger::Logger@{logger::Logger}!operator=@{operator=}}
+\index{operator=@{operator=}!logger::Logger@{logger::Logger}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlogger_1_1Logger}{Logger}}\& logger\+::\+Logger\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlogger_1_1Logger}{Logger}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classlogger_1_1Logger_a4b6ad847a0db73960e447cbb07fb649a}\label{classlogger_1_1Logger_a4b6ad847a0db73960e447cbb07fb649a}} 
+\index{logger::Logger@{logger::Logger}!operator=@{operator=}}
+\index{operator=@{operator=}!logger::Logger@{logger::Logger}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlogger_1_1Logger}{Logger}}\& logger\+::\+Logger\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlogger_1_1Logger}{Logger}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/nyarosu/repos/hft/src/libs/logger/include/logger/\mbox{\hyperlink{logger_8hpp}{logger.\+hpp}}\item 
+/home/nyarosu/repos/hft/src/libs/logger/src/\mbox{\hyperlink{logger_8cpp}{logger.\+cpp}}\end{DoxyCompactItemize}

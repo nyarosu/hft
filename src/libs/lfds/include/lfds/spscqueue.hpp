@@ -12,7 +12,7 @@
 
 #include <vector>
 #include <atomic>
-#include "assertions.hpp"
+#include "utils/assertions.hpp"
 
 namespace lfds {
 
@@ -52,12 +52,6 @@ namespace lfds {
 
         SPSCQueue(SPSCQueue&&) = delete;
         SPSCQueue& operator=(SPSCQueue&&) = delete;
-
-        /**
-         * @brief Resize the queue to a new size
-         * @param new_size new size of queue
-         */
-        void resize(std::size_t new_size) {}
 
         /**
          * @brief Get the number of elements in the queue. 

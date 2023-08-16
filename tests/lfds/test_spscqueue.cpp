@@ -1,4 +1,4 @@
-#include "spscqueue.hpp"
+#include "lfds/spscqueue.hpp"
 #include <gtest/gtest.h>
 #include <thread>
 

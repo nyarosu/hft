@@ -1,0 +1,53 @@
+\hypertarget{time_8hpp}{}\doxysection{/home/nyarosu/repos/hft/src/libs/utils/include/utils/time.hpp File Reference}
+\label{time_8hpp}\index{/home/nyarosu/repos/hft/src/libs/utils/include/utils/time.hpp@{/home/nyarosu/repos/hft/src/libs/utils/include/utils/time.hpp}}
+
+
+Time utils to get time in various formats. Used for logging, performance profiling, etc.  
+
+
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for time.\+hpp\+:
+% FIG 0
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceutils}{utils}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{utils\+::\+Nanos}} = int64\+\_\+t
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \mbox{\hyperlink{namespaceutils_a2ea72d59a456ab404501823d1b4274db}{utils\+::get\+Current\+Nanos}} () noexcept
+\begin{DoxyCompactList}\small\item\em Current time, since epoch, in nanoseconds. \end{DoxyCompactList}\item 
+std\+::string \& \mbox{\hyperlink{namespaceutils_a61432e3a10c7eecd365d723486e84e7f}{utils\+::get\+Current\+Time\+Str}} (std\+::string \&time\+\_\+str)
+\begin{DoxyCompactList}\small\item\em Get the Current Time Str object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr Nanos \mbox{\hyperlink{namespaceutils_a5a517d6a48996a4a1398eaa2c18e8e8d}{utils\+::\+NANOS\+\_\+\+TO\+\_\+\+MICROS}} \{ 1000 \}
+\item 
+constexpr Nanos \mbox{\hyperlink{namespaceutils_abd246a5687b11ea0224effb1ab1454a0}{utils\+::\+MICROS\+\_\+\+TO\+\_\+\+MILLIS}} \{ 1000 \}
+\item 
+constexpr Nanos \mbox{\hyperlink{namespaceutils_a68a0820e7d635c2b414bca2840b82549}{utils\+::\+MILLIS\+\_\+\+TO\+\_\+\+SECS}} \{ 1000 \}
+\item 
+constexpr Nanos \mbox{\hyperlink{namespaceutils_a9ae36c9a00975b64c5ee3c7731cf2666}{utils\+::\+NANOS\+\_\+\+TO\+\_\+\+MILLIS}} \{ NANOS\+\_\+\+TO\+\_\+\+MICROS $\ast$ MICROS\+\_\+\+TO\+\_\+\+MILLIS \}
+\item 
+constexpr Nanos \mbox{\hyperlink{namespaceutils_a4cce5c34fc1fe1baf5db27b6e779c2eb}{utils\+::\+NANOS\+\_\+\+TO\+\_\+\+SECS}} \{ NANOS\+\_\+\+TO\+\_\+\+MILLIS $\ast$ MILLIS\+\_\+\+TO\+\_\+\+SECS \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Time utils to get time in various formats. Used for logging, performance profiling, etc. 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}

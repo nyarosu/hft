@@ -10,13 +10,44 @@
 \item 
 class \mbox{\hyperlink{classutils_1_1MemPool}{Mem\+Pool}}
 \begin{DoxyCompactList}\small\item\em Dynamically allocated memory pool. A large amount of memory is allocated up front, during construction. Then, you can request chunks of memory from the pool, and this will be much faster as the memory has already been allocated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} = int64\+\_\+t
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{namespaceutils_ad09a37f0ec1f701d4258a5eabd576279}{ASSERT}} (bool condition, const std\+::string \&message) noexcept
 \begin{DoxyCompactList}\small\item\em Asserts that condition is true, otherwise logs message and exits. Uses branch prediction hints. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespaceutils_a6d00d8c7eb8d4d57634795894d7e751d}{FATAL}} (const std\+::string \&message) noexcept
-\begin{DoxyCompactList}\small\item\em Log error and exit immediately. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Log error and exit immediately. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{namespaceutils_a2ea72d59a456ab404501823d1b4274db}{get\+Current\+Nanos}} () noexcept
+\begin{DoxyCompactList}\small\item\em Current time, since epoch, in nanoseconds. \end{DoxyCompactList}\item 
+std\+::string \& \mbox{\hyperlink{namespaceutils_a61432e3a10c7eecd365d723486e84e7f}{get\+Current\+Time\+Str}} (std\+::string \&time\+\_\+str)
+\begin{DoxyCompactList}\small\item\em Get the Current Time Str object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} \mbox{\hyperlink{namespaceutils_a5a517d6a48996a4a1398eaa2c18e8e8d}{NANOS\+\_\+\+TO\+\_\+\+MICROS}} \{ 1000 \}
+\item 
+constexpr \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} \mbox{\hyperlink{namespaceutils_abd246a5687b11ea0224effb1ab1454a0}{MICROS\+\_\+\+TO\+\_\+\+MILLIS}} \{ 1000 \}
+\item 
+constexpr \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} \mbox{\hyperlink{namespaceutils_a68a0820e7d635c2b414bca2840b82549}{MILLIS\+\_\+\+TO\+\_\+\+SECS}} \{ 1000 \}
+\item 
+constexpr \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} \mbox{\hyperlink{namespaceutils_a9ae36c9a00975b64c5ee3c7731cf2666}{NANOS\+\_\+\+TO\+\_\+\+MILLIS}} \{ \mbox{\hyperlink{namespaceutils_a5a517d6a48996a4a1398eaa2c18e8e8d}{NANOS\+\_\+\+TO\+\_\+\+MICROS}} $\ast$ \mbox{\hyperlink{namespaceutils_abd246a5687b11ea0224effb1ab1454a0}{MICROS\+\_\+\+TO\+\_\+\+MILLIS}} \}
+\item 
+constexpr \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} \mbox{\hyperlink{namespaceutils_a4cce5c34fc1fe1baf5db27b6e779c2eb}{NANOS\+\_\+\+TO\+\_\+\+SECS}} \{ \mbox{\hyperlink{namespaceutils_a9ae36c9a00975b64c5ee3c7731cf2666}{NANOS\+\_\+\+TO\+\_\+\+MILLIS}} $\ast$ \mbox{\hyperlink{namespaceutils_a68a0820e7d635c2b414bca2840b82549}{MILLIS\+\_\+\+TO\+\_\+\+SECS}} \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}\label{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}} 
+\index{utils@{utils}!Nanos@{Nanos}}
+\index{Nanos@{Nanos}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{Nanos}{Nanos}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{utils\+::\+Nanos}} = typedef int64\+\_\+t}
+
 
 
 \doxysubsection{Function Documentation}
@@ -58,3 +89,67 @@ Log error and exit immediately.
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
+\mbox{\Hypertarget{namespaceutils_a2ea72d59a456ab404501823d1b4274db}\label{namespaceutils_a2ea72d59a456ab404501823d1b4274db}} 
+\index{utils@{utils}!getCurrentNanos@{getCurrentNanos}}
+\index{getCurrentNanos@{getCurrentNanos}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{getCurrentNanos()}{getCurrentNanos()}}
+{\footnotesize\ttfamily auto utils\+::get\+Current\+Nanos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Current time, since epoch, in nanoseconds. 
+
+\begin{DoxyReturn}{Returns}
+current time in ns 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceutils_a61432e3a10c7eecd365d723486e84e7f}\label{namespaceutils_a61432e3a10c7eecd365d723486e84e7f}} 
+\index{utils@{utils}!getCurrentTimeStr@{getCurrentTimeStr}}
+\index{getCurrentTimeStr@{getCurrentTimeStr}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{getCurrentTimeStr()}{getCurrentTimeStr()}}
+{\footnotesize\ttfamily std\+::string\& utils\+::get\+Current\+Time\+Str (\begin{DoxyParamCaption}\item[{std\+::string \&}]{time\+\_\+str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Current Time Str object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+\_\+str} & Sets this string to the current time in string format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+auto\& reference to the string 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceutils_abd246a5687b11ea0224effb1ab1454a0}\label{namespaceutils_abd246a5687b11ea0224effb1ab1454a0}} 
+\index{utils@{utils}!MICROS\_TO\_MILLIS@{MICROS\_TO\_MILLIS}}
+\index{MICROS\_TO\_MILLIS@{MICROS\_TO\_MILLIS}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{MICROS\_TO\_MILLIS}{MICROS\_TO\_MILLIS}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} utils\+::\+MICROS\+\_\+\+TO\+\_\+\+MILLIS \{ 1000 \}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespaceutils_a68a0820e7d635c2b414bca2840b82549}\label{namespaceutils_a68a0820e7d635c2b414bca2840b82549}} 
+\index{utils@{utils}!MILLIS\_TO\_SECS@{MILLIS\_TO\_SECS}}
+\index{MILLIS\_TO\_SECS@{MILLIS\_TO\_SECS}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{MILLIS\_TO\_SECS}{MILLIS\_TO\_SECS}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} utils\+::\+MILLIS\+\_\+\+TO\+\_\+\+SECS \{ 1000 \}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespaceutils_a5a517d6a48996a4a1398eaa2c18e8e8d}\label{namespaceutils_a5a517d6a48996a4a1398eaa2c18e8e8d}} 
+\index{utils@{utils}!NANOS\_TO\_MICROS@{NANOS\_TO\_MICROS}}
+\index{NANOS\_TO\_MICROS@{NANOS\_TO\_MICROS}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{NANOS\_TO\_MICROS}{NANOS\_TO\_MICROS}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} utils\+::\+NANOS\+\_\+\+TO\+\_\+\+MICROS \{ 1000 \}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespaceutils_a9ae36c9a00975b64c5ee3c7731cf2666}\label{namespaceutils_a9ae36c9a00975b64c5ee3c7731cf2666}} 
+\index{utils@{utils}!NANOS\_TO\_MILLIS@{NANOS\_TO\_MILLIS}}
+\index{NANOS\_TO\_MILLIS@{NANOS\_TO\_MILLIS}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{NANOS\_TO\_MILLIS}{NANOS\_TO\_MILLIS}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} utils\+::\+NANOS\+\_\+\+TO\+\_\+\+MILLIS \{ \mbox{\hyperlink{namespaceutils_a5a517d6a48996a4a1398eaa2c18e8e8d}{NANOS\+\_\+\+TO\+\_\+\+MICROS}} $\ast$ \mbox{\hyperlink{namespaceutils_abd246a5687b11ea0224effb1ab1454a0}{MICROS\+\_\+\+TO\+\_\+\+MILLIS}} \}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespaceutils_a4cce5c34fc1fe1baf5db27b6e779c2eb}\label{namespaceutils_a4cce5c34fc1fe1baf5db27b6e779c2eb}} 
+\index{utils@{utils}!NANOS\_TO\_SECS@{NANOS\_TO\_SECS}}
+\index{NANOS\_TO\_SECS@{NANOS\_TO\_SECS}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{NANOS\_TO\_SECS}{NANOS\_TO\_SECS}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespaceutils_a1c5de798ee2b32a56c9be499b1171b51}{Nanos}} utils\+::\+NANOS\+\_\+\+TO\+\_\+\+SECS \{ \mbox{\hyperlink{namespaceutils_a9ae36c9a00975b64c5ee3c7731cf2666}{NANOS\+\_\+\+TO\+\_\+\+MILLIS}} $\ast$ \mbox{\hyperlink{namespaceutils_a68a0820e7d635c2b414bca2840b82549}{MILLIS\+\_\+\+TO\+\_\+\+SECS}} \}\hspace{0.3cm}{\ttfamily [constexpr]}}
+

@@ -1,0 +1,11 @@
+digraph "/home/nyarosu/repos/hft/src/libs/lfds/include/lfds/spscqueue.hpp"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="/home/nyarosu/repos\l/hft/src/libs/lfds/include\l/lfds/spscqueue.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Single producer, single consumer, lock free queue."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="/home/nyarosu/repos\l/hft/src/libs/logger\l/include/logger/logger.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$logger_8hpp.html",tooltip="Public interface of logger class."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="/home/nyarosu/repos\l/hft/src/libs/logger\l/src/logger.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$logger_8cpp.html",tooltip="Implementation of logger class."];
+}
