@@ -91,18 +91,31 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/nyarosu/hft.git
    ```
-3. Build with cmake. 
+3.  Go into the repository and then into the extern.
+  ```sh
+   cd hft/extern
+   ```
+4.  Clone the vcpkg repository.
+  ```sh
+   git clone https://github.com/Microsoft/vcpkg.git
+   ```
+5. Go back to the root repository and make a build directory
+  ```sh
+   cd .. && mkdir build
+   ```
+6. Build with cmake. 
    ```sh
    cd build && cmake -S .. -B . && cmake --build .
    ```
-4. Run tests to make sure everything works (be inside build, after running the prior commands)
+7. Run tests to make sure everything works (be inside build, after running the prior commands)
    ```sh
    ctest
    ```
-5. Start the trading system (from inside build)
+8. Start the trading system (from inside build)
    ```sh
    ./app/HFT
    ```
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

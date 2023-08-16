@@ -60,7 +60,7 @@ TEST(MemPoolTests, ValidDeallocation) {
     auto ptr { pool.allocate(15) };
 
     // No error here means that deallocating succeeded
-    pool.deallocate(ptr);
+    ASSERT_NO_THROW(pool.deallocate(ptr));
 }
 
 TEST(MemPoolTests, InvalidDeallocation) {

@@ -46,6 +46,9 @@ TEST(SPSCQueueTests, WrapAroundBehavior) {
     *write_ptr = 3;
     queue.updateWriteIndex();
 
+    auto value_at_index_0{ queue.getValueAtIndex(0) };
+    ASSERT_EQ(value_at_index_0, 3); // Expecting the 1st element, which is 3
+
     auto read_ptr { queue.getNextRead() };
     ASSERT_EQ(*read_ptr, 2);  // Expecting the 3rd element, which is 2
 }
