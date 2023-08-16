@@ -1,0 +1,24 @@
+// The getRandCore() function returns a random thread ID by getting the number of available
+//  hardware threads: int n {static cast<int> (std::thread::hardware_concurrency())};
+//  initializes a random number generator using std::mt19937 and creates a uniform
+//  distribution to generate random core IDs - std::uniform_int_distribution dist{0, n-1}.
+//  Then it returns dist(mt).
+
+
+// ThreadsTests.ThreadsAreCreatedAndRun (subtest of ThreadTests):
+// 	getRandCore() returns an integer representing a thread to be used for testing purposes
+//  const int CORE_ID{getRandCore()} initializes a const int by calling getRandCore(),
+//  in order to obtain a thread identifier.
+//  int_sum_of_args{-1} initializes sum_of_args to -1 and stores the number of args passed 
+//  To test function. test_fn is a lambda function taking in 2 int args and calculating
+//  their sum and assigning the value to sum_of_args. std::thread creates a thread.
+//  createAndStart() is called and passes the thread identifier, the thread name,
+//  the test_fn lambda and 3 int arguments
+//  thread.join() synchronizes the main thread with the test thread.
+//  ASSERT_EQ(sum_of_args, 6) asserts the value of sum_of_args to 6.
+
+// ThreadsTests.ThreadsHaveCorrectAffinity:
+// 	sched_getcpu() returns the number on the CPU of which the calling thread is currently
+// 	executing - which specific processor core is currently handling the thread’s operations.
+// 	asserts the return value to the thread being used for testing purposes.
+

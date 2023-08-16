@@ -1,0 +1,50 @@
+// The TestObj class has a private int var called m_value with val -1. TestObj() is the
+// default constructor for the class. Explicit TestObj(int value) : m_value{value} {}
+// defines a constructor that takes int value as param and initializes m_value using
+//  value.getValue() returns value of m_value and setValue() sets m_value to a new value.
+
+
+// MemPoolTests.PoolSizeValidation:
+//  Checks the behavior of the memory pool when attempting to be created with an invalid
+//  pool size by checking to see if it throws an exception.
+
+// MemPoolTests.CreateAndUseValidPool:
+// 	Checks the functionality of the meme pool with the use of the TestObj class to get and
+// 	set values. Uses ASSERT_EQ to ensure the correct values are returned after new 
+// 	values are allocated to the pool - TestObj* new_obj { pool.allocate(5) }
+
+// MemPoolTests.AllocatingFullPoolFails:
+// 	Ensures the program terminates when a full pool is allocated another value by using
+// 	ASSERT_DEATH. Checks the error message.
+	
+// MemPoolTests.ResizePool:
+// 	Resizing a memory pool by using the resize method - pool.resize(4) and checking to see 
+// 	if there is no fatal error upon allocating values past the former pool size - 
+// 	ASSERT_NO_FATAL_FAILURE
+
+// MemPoolTests.ValidDeallocation:
+// 	Checks to see that there are no errors when the pointer is deallocated from a value -
+// 	auto ptr { pool.allocate(15) } 
+// 	ASSERT_NO_THROW(pool.deallocate(ptr)) # No error means deallocating succeeded
+
+// MemPoolTests.InvalidDeallocation:
+// 	Ensures that object not allocated in the pool being deleted using pool results in the 
+// 	program terminating with the error message “Pointer provided doesn’t point to 
+// 	something in this pool.”
+// 	Ensures double deallocation is prohibited with the error message “Attempted to 
+// 	deallocate unallocated entry in pool”.
+
+// MemPoolTests.ObjectReuseAfterDeallocation:
+// 	Checks if the second object reuses the memory location of the first object after its
+// 	pointer is deallocated to prevent extensive usage of memory. ASSERT_EQ is used
+// 	on obj1 and obj2 as well as obj2->getValue() and 10.
+
+// MemPoolTests.PoolExhaustAndReallocation:
+// 	ASSERT_DEATH on allocating into a full pool and then resizing the pool before
+// 	allocating the value as a TestObj object and then using ASSERT_EQ to get the
+// 	value of the object through getValue and check if is the value it should be.
+
+// MemPoolTests.ResizedPoolIntegrity:
+// 	Shrinks the pool before exhausting it to see if the program terminates then expands
+// 	before allocating a new value to the pool and seeing if the value of its object - getValue()
+// 	is equal to its value.

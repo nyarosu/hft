@@ -1,0 +1,12 @@
+// AssertionTests.AssertingFalseTerminates:
+//  ASSERT_DEATH checks whether a specific piece of code results in the program terminating.
+//  In this case, the program terminates when it encounters a false condition and 
+//  utils::ASSERT checks to see if it displays the error message “Assertion failed: test”.
+
+// AssertionTests.AssertingTrueIsOK:
+//  ASSERT_NO_FATAL_FAILURE ensures that when encountered with a true condition, the code 
+//  runs without any fatal errors.
+
+// AssertionTests.FatalQuitsImmediately:
+// 	Checks to see that upon a fatal error, the program immediately terminates with the error
+// 	Message “Fatal error: test”.

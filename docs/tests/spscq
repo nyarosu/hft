@@ -1,0 +1,35 @@
+// SPSCQTests.CreateSPSCQueue (Single Producer Single Consumer Queue:
+// 	Checks the validity of the SPSC queue by writing two strings and reading the first
+// 	string by using the c_str() function providing a null-terminated character array to be
+// 	compared to strings using ASSERT_STREQ. queue.updateWriteIndex() is called after
+//  each string is written.
+
+// SPSCQTests.ReadFromEmptyQueue:
+// 	Checks that a null pointer is returned upon reading from an empty list - 
+//  ASSERT_EQ(queue.getNextRead(), nullptr)
+
+// SPSCQTests.WrapAroundBehavior:
+// 	Validates the wrap-around behavior of the SPSC queue by writing 0, 1, 2 to the queue
+// 	and reading the first two elements before writing a fourth element despite the queue 
+// 	size being 3. This will wrap around to index 0. Then reads the third element - auto
+//  read_ptr { queue.getNextRead() }. Then uses ASSERT_EQ to validate the third element as
+//  2. Inaddition, the value of index 0 is asserted to be 3 to validate the wrap-around  
+//  behavior of the queue.
+
+// SPSCQTests.OrderingOfElements:
+// 	Ensures the queue is read and written in the correct order using a for loop to iterate
+// 	through each element of a list of strings and write their value in the queue before 
+// 	using another one to read through the list comparing each string read with the elements
+// 	in the queue.
+
+// SPSCQTests.BasicMultthreadedProducerConsumer:
+// 	Demonstrates a simple multithreaded producer-consumer scenario with the 
+//  producerFunc lambda simulating the producer’s behavior by writing items to the queue
+//  through a for loop and the consumerFunc lambda simulating the consumer’s behavior by
+//  attempting to read from the queue while iterating through each item. If a read is 
+//  successful, the read value is compared with the expected value i to verify it. If not
+//  then it retries after a short period of time - 
+//  std::this_thread::sleep_for(std::chrono::microseconds(1)).
+//  The main thread waits for both the producer and consumer thread to finish before the
+//  test case is completed.If the item in the queue is unavailable,
+//  the consumer will have to wait before retrying.
