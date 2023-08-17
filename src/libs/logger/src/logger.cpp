@@ -22,8 +22,20 @@ namespace logger {
         // Spawn background thread that will handle writes. -1 affinity indicates not to set affinity - this is a low priority, background thread.
         logger_thread_ = utils::threads::createAndStart(-1, "Logger", [this]() { consumeQueue(); });
 
-        // If thread creation fails, it is joined before being returned. 
+        // If thread creation fails, it is joined before being returned - meaning we can check for joinability here as a failure check.
         utils::ASSERT(logger_thread_.joinable(), "Failed to start logging thread");
+    }
+
+    Logger::~Logger() {
+        // Wait for queue to empty
+        while (queue_.size()) {
+            std::this_thread::sleep_for(std::chrono::seconds { 1 });
+        }
+        // Set running to false and wait for thread to finish up
+        running_ = false;
+        logger_thread_.join();
+
+        file_.close();
     }
 
     void Logger::consumeQueue() noexcept {
@@ -57,16 +69,24 @@ namespace logger {
             std::this_thread::sleep_for(std::chrono::milliseconds { 1 });
         }
     }
+    
+    void Logger::pushValue(const LogElement& element) noexcept {
+        *(queue_.getNextWriteTo()) = element;
+        queue_.updateWriteIndex();
+    }
 
-    Logger::~Logger() {
-        // Wait for queue to empty
-        while (queue_.size()) {
-            std::this_thread::sleep_for(std::chrono::seconds { 1 });
+    void Logger::pushValue(const char ch) noexcept {
+        pushValue(LogElement { LogType::CHAR, { .c = ch } });
+    }
+
+    void Logger::pushValue(const char* cstr) noexcept {
+        while (*cstr) {
+            pushValue(*cstr);
+            ++cstr;
         }
-        // Set running to false and wait for thread to finish up
-        running_ = false;
-        logger_thread_.join();
+    }
 
-        file_.close();
+    void Logger::pushValue(const std::string& str) noexcept {
+        pushValue(str.c_str());
     }
 }
