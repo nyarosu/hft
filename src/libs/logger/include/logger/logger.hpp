@@ -65,32 +65,46 @@ namespace logger {
         Logger& operator=(Logger&&) = delete; 
 
         /**
-         * @brief Log an element - push a new log item to the queue.
-         * In most cases, you should be using Logger::log() instead of this method.
-         * @param element Log element to push
+         * @brief Log a message to the logfile. Format string is printf style, but you don't specify the type after the %
+         * For example: log("Hello %\n", "world") will log "Hello world" to the log file.
+         * @note Remember to include newline character unless you specifically don't want it.
+         * @tparam Args Argument types
+         * @param str Format string.
+         * @param args Arguments
          */
-        void pushValue(const LogElement& element) noexcept;
-
+        template<typename First, typename... Args>
+        void log(const char* str, const First& value, Args... args) noexcept {
+          while (*str) {
+            if (*str == '%') {
+                if (*(str + 1) == '%') [[unlikely]] {
+                    ++str;
+                } else {
+                    pushValue(value);
+                    log(str + 1, args...);
+                    return;
+                }
+            }
+            pushValue(*str++);
+          }
+        }; 
+        
         /**
-         * @brief Log a character - push a character to the logging queue.
-         * Internally, just constructs a LogElement and calls other overload.
-         * @param ch Character to log 
+         * @brief Log a message to the logfile. No format string version - simple strings.
+         * @note Remember to include newline character unless you specifically don't want it.
+         * @param str String to log to the logfile.
          */
-        void pushValue(const char ch) noexcept;
-
-        /**
-         * @brief Log a c-style string - push all the characters of the string to the logging queue
-         * @param cstr C-style string you want logged
-         * @todo implementation can be made faster by using a memcpy instead of a loop
-         */ 
-        void pushValue(const char* cstr) noexcept;
-
-        /**
-         * @brief Log a string - push all the characters of the string to the logging queue.
-         * Internally, simply converts the string to a c-style string and calls other overload.
-         * @param str String to log
-         */
-        void pushValue(const std::string& str) noexcept;
+        void log(const char* str) noexcept {
+            while (*str) {
+                if (*str == '%') {
+                    if (*(str + 1) == '%') [[unlikely]] {
+                        ++str;
+                    } else {
+                        return;
+                    }
+                }
+                pushValue(*str++);
+            }
+        }
 
     private:
         /**
@@ -98,5 +112,24 @@ namespace logger {
          * Spins in a loop as long as running_ is true, scanning queue for new logs and writing them to file.
          */
         void consumeQueue() noexcept;
+
+        /**
+         * @brief Internal method that logs an element - push a new log item to the queue.
+         * Has convenience overloads that handle construction of LogElement
+         * @param element Log element to push
+         */
+        void pushValue(const LogElement& element) noexcept;
+
+        void pushValue(const char ch) noexcept;
+        void pushValue(const char* cstr) noexcept;
+        void pushValue(const std::string& str) noexcept;
+        void pushValue(const int value) noexcept;
+        void pushValue(const long value) noexcept;
+        void pushValue(const long long value) noexcept;
+        void pushValue(const unsigned value) noexcept;
+        void pushValue(const unsigned long value) noexcept;
+        void pushValue(const unsigned long long value) noexcept;
+        void pushValue(const float value) noexcept;
+        void pushValue(const double value) noexcept;
     };
 }

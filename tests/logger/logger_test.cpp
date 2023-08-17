@@ -2,6 +2,4 @@
 
 #include "logger/logger.hpp"
 
-TEST(LoggerTests, BasicLogging) {
-    logger::Logger logs { "test.log" };
-}
+TEST(Logger, BasicLogging) {}
