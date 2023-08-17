@@ -89,4 +89,36 @@ namespace logger {
     void Logger::pushValue(const std::string& str) noexcept {
         pushValue(str.c_str());
     }
+
+    void Logger::pushValue(const int value) noexcept {
+        pushValue(LogElement{LogType::INTEGER, {.i = value}});
+    }   
+
+    void Logger::pushValue(const long value) noexcept {
+        pushValue(LogElement{LogType::LONG_INTEGER, {.l = value}});
+    }
+
+    void Logger::pushValue(const long long value) noexcept {
+        pushValue(LogElement{LogType::LONG_LONG_INTEGER, {.ll = value}});
+    }
+
+    void Logger::pushValue(const unsigned value) noexcept {
+        pushValue(LogElement{LogType::UNSIGNED_INTEGER, {.u = value}});
+    }
+
+    void Logger::pushValue(const unsigned long value) noexcept {
+        pushValue(LogElement{LogType::UNSIGNED_LONG_INTEGER, {.ul = value}});
+    }
+
+    void Logger::pushValue(const unsigned long long value) noexcept {
+        pushValue(LogElement{LogType::UNSIGNED_LONG_LONG_INTEGER, {.ull = value}});
+    }
+
+    void Logger::pushValue(const float value) noexcept {
+        pushValue(LogElement{LogType::FLOAT, {.f = value}});
+    }
+
+    void Logger::pushValue(const double value) noexcept {
+        pushValue(LogElement{LogType::DOUBLE, {.d = value}});
+    }
 }
