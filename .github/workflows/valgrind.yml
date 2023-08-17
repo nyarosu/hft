@@ -1,0 +1,33 @@
+name: CI - Valgrind
+
+on:
+  push:
+    branches: [ main, master, dev ]
+  pull_request:
+    branches: [ main, master, dev ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: |
+        sudo apt-get install gcovr lcov valgrind cmake g++ 
+    - name: prepare
+      run: |
+        cd extern
+        git clone https://github.com/Microsoft/vcpkg.git
+    - name: configure
+      run: |
+        mkdir build && cd build
+        cmake -S .. -B . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=On
+    - name: building
+      run: |
+        cd build
+        cmake --build . --config Debug
+    - name: check for memory leaks
+      run: |
+        cd build
+        ctest -T memcheck
+        bash <(curl -s https://codecov.io/bash)

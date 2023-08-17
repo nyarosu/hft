@@ -70,6 +70,7 @@ TEST(MemPoolTests, InvalidDeallocation) {
     TestObj* NotInPool { new TestObj{ 5 } };
 
     ASSERT_DEATH(pool.deallocate(NotInPool), "Pointer provided doesn't point to something in this pool.");
+    delete NotInPool;
 
     // Make sure double deallocation is prevented
     TestObj* InPool { pool.allocate(1) };
