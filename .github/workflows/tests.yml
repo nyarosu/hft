@@ -14,6 +14,10 @@ jobs:
     - name: install
       run: |
         sudo apt-get install gcovr lcov
+    - name: prepare
+      run: |
+        cd extern
+        git clone https://github.com/Microsoft/vcpkg.git
     - name: configure
       run: |
         cmake -H. -Bbuild -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=On
