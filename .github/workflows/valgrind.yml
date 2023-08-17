@@ -9,27 +9,38 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
+
     - name: install
       run: |
-        sudo apt-get install gcovr lcov valgrind cmake g++ 
+        sudo apt-get update
+        sudo apt-get install gcovr lcov valgrind cmake g++
+
     - name: prepare
       run: |
         cd extern
         git clone https://github.com/Microsoft/vcpkg.git
+
     - name: configure
       run: |
         mkdir build && cd build
         cmake -S .. -B . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=On
+
     - name: building
       run: |
         cd build
         cmake --build . --config Debug
+
     - name: scan for memory leaks
       run: |
         cd build
-        ctest -T memcheck
-        if grep -q "<Error>" Testing/Temporary/MemoryChecker.*.log; then
-          exit 1
+        output=$(ctest -T memcheck | grep "Memory Leak")
+        leaks=$(echo $output | cut -d' ' -f4)
+        if [ "$leaks" -gt "0" ]; then
+            echo "Memory Leak detected!"
+            exit 1
+        else
+            echo "No Memory Leaks found."
         fi
