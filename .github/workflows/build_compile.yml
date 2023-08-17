@@ -10,13 +10,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: prepare
       run: |
         cd extern
         git clone https://github.com/Microsoft/vcpkg.git
     - name: configure
       run: |
-        cd build
+        mkdir build && cd build
         cmake -S .. -B . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release
     - name: building
       run: |
