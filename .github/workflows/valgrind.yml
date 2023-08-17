@@ -26,8 +26,10 @@ jobs:
       run: |
         cd build
         cmake --build . --config Debug
-    - name: check for memory leaks
+    - name: scan for memory leaks
       run: |
         cd build
         ctest -T memcheck
-        bash <(curl -s https://codecov.io/bash)
+        if grep -q "<Error>" Testing/Temporary/MemoryChecker.*.log; then
+          exit 1
+        fi
