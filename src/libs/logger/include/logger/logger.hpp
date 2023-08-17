@@ -64,10 +64,38 @@ namespace logger {
         Logger& operator=(const Logger&) = delete;
         Logger& operator=(Logger&&) = delete; 
 
+        /**
+         * @brief Log an element - push a new log item to the queue.
+         * In most cases, you should be using Logger::log() instead of this method.
+         * @param element Log element to push
+         */
+        void pushValue(const LogElement& element) noexcept;
+
+        /**
+         * @brief Log a character - push a character to the logging queue.
+         * Internally, just constructs a LogElement and calls other overload.
+         * @param ch Character to log 
+         */
+        void pushValue(const char ch) noexcept;
+
+        /**
+         * @brief Log a c-style string - push all the characters of the string to the logging queue
+         * @param cstr C-style string you want logged
+         * @todo implementation can be made faster by using a memcpy instead of a loop
+         */ 
+        void pushValue(const char* cstr) noexcept;
+
+        /**
+         * @brief Log a string - push all the characters of the string to the logging queue.
+         * Internally, simply converts the string to a c-style string and calls other overload.
+         * @param str String to log
+         */
+        void pushValue(const std::string& str) noexcept;
+
     private:
         /**
          * @brief Internal method that the background thread runs.
-         * Scans queue for new logs and writes to file.
+         * Spins in a loop as long as running_ is true, scanning queue for new logs and writing them to file.
          */
         void consumeQueue() noexcept;
     };
