@@ -14,9 +14,6 @@ jobs:
     - name: install
       run: |
         sudo apt-get install gcovr lcov
-    - name: prepare
-      run: |
-        make prepare
     - name: configure
       run: |
         cmake -H. -Bbuild -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=On
