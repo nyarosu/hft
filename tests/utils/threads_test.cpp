@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "threads/threads.hpp"
+#include "utils/threads/threads.hpp"
 #include <random>
 
 int getRandCore();

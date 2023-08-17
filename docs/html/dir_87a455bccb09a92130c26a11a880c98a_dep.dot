@@ -7,9 +7,12 @@ digraph "/home/nyarosu/repos/hft/src/libs" {
   subgraph clusterdir_87a455bccb09a92130c26a11a880c98a {
     graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_87a455bccb09a92130c26a11a880c98a.html"];
     dir_87a455bccb09a92130c26a11a880c98a [shape=plaintext label="libs"];
-  dir_f5ecc940fd1d9164c9f5ec8343d73055 [shape=box label="lfds" fillcolor="white" style="filled" URL="dir_f5ecc940fd1d9164c9f5ec8343d73055.html"];
+  dir_f5ecc940fd1d9164c9f5ec8343d73055 [shape=box label="lfds" fillcolor="white" style="filled" color="red" URL="dir_f5ecc940fd1d9164c9f5ec8343d73055.html"];
+  dir_6a7bb23dbf160e8ec7a7827a8b667fa7 [shape=box label="logger" fillcolor="white" style="filled" color="red" URL="dir_6a7bb23dbf160e8ec7a7827a8b667fa7.html"];
   dir_0613198e77a9b173fe3ff0a50633b455 [shape=box label="utils" fillcolor="white" style="filled" color="red" URL="dir_0613198e77a9b173fe3ff0a50633b455.html"];
   }
   }
-  dir_f5ecc940fd1d9164c9f5ec8343d73055->dir_0613198e77a9b173fe3ff0a50633b455 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000004.html"];
+  dir_f5ecc940fd1d9164c9f5ec8343d73055->dir_0613198e77a9b173fe3ff0a50633b455 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000010.html"];
+  dir_6a7bb23dbf160e8ec7a7827a8b667fa7->dir_f5ecc940fd1d9164c9f5ec8343d73055 [headlabel="1", labeldistance=1.5 headhref="dir_000006_000003.html"];
+  dir_6a7bb23dbf160e8ec7a7827a8b667fa7->dir_0613198e77a9b173fe3ff0a50633b455 [headlabel="2", labeldistance=1.5 headhref="dir_000006_000010.html"];
 }

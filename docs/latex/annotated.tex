@@ -1,5 +1,7 @@
 \doxysection{Class List}
 Here are the classes, structs, unions and interfaces with brief descriptions\+:\begin{DoxyCompactList}
+\item\contentsline{section}{\mbox{\hyperlink{structlogger_1_1LogElement}{logger\+::\+Log\+Element}} \\*One log element. Uses union to represent the fact that it could contain any one of those types }{\pageref{structlogger_1_1LogElement}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classlogger_1_1Logger}{logger\+::\+Logger}} \\*\mbox{\hyperlink{classlogger_1_1Logger}{Logger}} class to log to a file. Runs on a background thread for performance reasons. Communicates with main threads via lock free SPSC queue -\/ main threads write data to the queue, logger reads and writes to a file }{\pageref{classlogger_1_1Logger}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classutils_1_1MemPool}{utils\+::\+Mem\+Pool$<$ T $>$}} \\*Dynamically allocated memory pool. A large amount of memory is allocated up front, during construction. Then, you can request chunks of memory from the pool, and this will be much faster as the memory has already been allocated }{\pageref{classutils_1_1MemPool}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue$<$ T $>$}} \\*A lock free, low overhead, single producer/consumer queue. No locks of any kind are used, so no locking/context switch overhead. This is achieved using atomic variables }{\pageref{classlfds_1_1SPSCQueue}}{}
 \end{DoxyCompactList}

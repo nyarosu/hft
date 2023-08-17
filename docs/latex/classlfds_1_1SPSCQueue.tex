@@ -24,8 +24,6 @@ A lock free, low overhead, single producer/consumer queue. No locks of any kind 
 \item 
 \mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} \& \mbox{\hyperlink{classlfds_1_1SPSCQueue_a3b80a575678abf7cf8e4217f5ab19401}{operator=}} (\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}} \&\&)=delete
 \item 
-void \mbox{\hyperlink{classlfds_1_1SPSCQueue_aa56bdec6bcbe62b24be3167829217797}{resize}} (std\+::size\+\_\+t new\+\_\+size)
-\begin{DoxyCompactList}\small\item\em Resize the queue to a new size. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{classlfds_1_1SPSCQueue_a8ed7468492e5f5618249b0080c44cce3}{size}} () const noexcept
 \begin{DoxyCompactList}\small\item\em Get the number of elements in the queue. Not just how many were allocated, how many have actually been written. \end{DoxyCompactList}\item 
 T $\ast$ \mbox{\hyperlink{classlfds_1_1SPSCQueue_a2d996403cc0b155fca19648384e5c773}{get\+Next\+Write\+To}} () noexcept
@@ -143,22 +141,6 @@ T$\ast$ -\/ pointer to element.
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 \mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}}\& \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlfds_1_1SPSCQueue}{SPSCQueue}}$<$ T $>$ \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
-\mbox{\Hypertarget{classlfds_1_1SPSCQueue_aa56bdec6bcbe62b24be3167829217797}\label{classlfds_1_1SPSCQueue_aa56bdec6bcbe62b24be3167829217797}} 
-\index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!resize@{resize}}
-\index{resize@{resize}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
-\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-void \mbox{\hyperlink{classlfds_1_1SPSCQueue}{lfds\+::\+SPSCQueue}}$<$ T $>$\+::resize (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{new\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Resize the queue to a new size. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em new\+\_\+size} & new size of queue \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{classlfds_1_1SPSCQueue_a8ed7468492e5f5618249b0080c44cce3}\label{classlfds_1_1SPSCQueue_a8ed7468492e5f5618249b0080c44cce3}} 
 \index{lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}!size@{size}}
 \index{size@{size}!lfds::SPSCQueue$<$ T $>$@{lfds::SPSCQueue$<$ T $>$}}
@@ -199,4 +181,4 @@ Increment write index, wrapping around if required. Also increments size of queu
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/nyarosu/repos/hft/src/libs/lfds/\mbox{\hyperlink{spscqueue_8hpp}{spscqueue.\+hpp}}\end{DoxyCompactItemize}
+/home/nyarosu/repos/hft/src/libs/lfds/include/lfds/\mbox{\hyperlink{spscqueue_8hpp}{spscqueue.\+hpp}}\end{DoxyCompactItemize}

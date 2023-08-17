@@ -65,7 +65,9 @@ $(function() {
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">utils Namespace Reference</div>  </div>
 </div><!--header-->
@@ -82,6 +84,11 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dynamically allocated memory pool. A large amount of memory is allocated up front, during construction. Then, you can request chunks of memory from the pool, and this will be much faster as the memory has already been allocated.  <a href="classutils_1_1MemPool.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a1c5de798ee2b32a56c9be499b1171b51"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a> = int64_t</td></tr>
+<tr class="separator:a1c5de798ee2b32a56c9be499b1171b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad09a37f0ec1f701d4258a5eabd576279"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutils.html#ad09a37f0ec1f701d4258a5eabd576279">ASSERT</a> (bool condition, const std::string &amp;message) noexcept</td></tr>
@@ -90,7 +97,41 @@ Functions</h2></td></tr>
 <tr class="memitem:a6d00d8c7eb8d4d57634795894d7e751d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutils.html#a6d00d8c7eb8d4d57634795894d7e751d">FATAL</a> (const std::string &amp;message) noexcept</td></tr>
 <tr class="memdesc:a6d00d8c7eb8d4d57634795894d7e751d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log error and exit immediately.  <a href="namespaceutils.html#a6d00d8c7eb8d4d57634795894d7e751d">More...</a><br /></td></tr>
 <tr class="separator:a6d00d8c7eb8d4d57634795894d7e751d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ea72d59a456ab404501823d1b4274db"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutils.html#a2ea72d59a456ab404501823d1b4274db">getCurrentNanos</a> () noexcept</td></tr>
+<tr class="memdesc:a2ea72d59a456ab404501823d1b4274db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current time, since epoch, in nanoseconds.  <a href="namespaceutils.html#a2ea72d59a456ab404501823d1b4274db">More...</a><br /></td></tr>
+<tr class="separator:a2ea72d59a456ab404501823d1b4274db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61432e3a10c7eecd365d723486e84e7f"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutils.html#a61432e3a10c7eecd365d723486e84e7f">getCurrentTimeStr</a> (std::string &amp;time_str)</td></tr>
+<tr class="memdesc:a61432e3a10c7eecd365d723486e84e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Current Time Str object.  <a href="namespaceutils.html#a61432e3a10c7eecd365d723486e84e7f">More...</a><br /></td></tr>
+<tr class="separator:a61432e3a10c7eecd365d723486e84e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5a517d6a48996a4a1398eaa2c18e8e8d"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutils.html#a5a517d6a48996a4a1398eaa2c18e8e8d">NANOS_TO_MICROS</a> { 1000 }</td></tr>
+<tr class="separator:a5a517d6a48996a4a1398eaa2c18e8e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd246a5687b11ea0224effb1ab1454a0"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutils.html#abd246a5687b11ea0224effb1ab1454a0">MICROS_TO_MILLIS</a> { 1000 }</td></tr>
+<tr class="separator:abd246a5687b11ea0224effb1ab1454a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68a0820e7d635c2b414bca2840b82549"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutils.html#a68a0820e7d635c2b414bca2840b82549">MILLIS_TO_SECS</a> { 1000 }</td></tr>
+<tr class="separator:a68a0820e7d635c2b414bca2840b82549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ae36c9a00975b64c5ee3c7731cf2666"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutils.html#a9ae36c9a00975b64c5ee3c7731cf2666">NANOS_TO_MILLIS</a> { <a class="el" href="namespaceutils.html#a5a517d6a48996a4a1398eaa2c18e8e8d">NANOS_TO_MICROS</a> * <a class="el" href="namespaceutils.html#abd246a5687b11ea0224effb1ab1454a0">MICROS_TO_MILLIS</a> }</td></tr>
+<tr class="separator:a9ae36c9a00975b64c5ee3c7731cf2666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cce5c34fc1fe1baf5db27b6e779c2eb"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutils.html#a4cce5c34fc1fe1baf5db27b6e779c2eb">NANOS_TO_SECS</a> { <a class="el" href="namespaceutils.html#a9ae36c9a00975b64c5ee3c7731cf2666">NANOS_TO_MILLIS</a> * <a class="el" href="namespaceutils.html#a68a0820e7d635c2b414bca2840b82549">MILLIS_TO_SECS</a> }</td></tr>
+<tr class="separator:a4cce5c34fc1fe1baf5db27b6e779c2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a1c5de798ee2b32a56c9be499b1171b51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c5de798ee2b32a56c9be499b1171b51">&#9670;&nbsp;</a></span>Nanos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">utils::Nanos</a> = typedef int64_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ad09a37f0ec1f701d4258a5eabd576279"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad09a37f0ec1f701d4258a5eabd576279">&#9670;&nbsp;</a></span>ASSERT()</h2>
@@ -170,6 +211,180 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a2ea72d59a456ab404501823d1b4274db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ea72d59a456ab404501823d1b4274db">&#9670;&nbsp;</a></span>getCurrentNanos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto utils::getCurrentNanos </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Current time, since epoch, in nanoseconds. </p>
+<dl class="section return"><dt>Returns</dt><dd>current time in ns </dd></dl>
+
+</div>
+</div>
+<a id="a61432e3a10c7eecd365d723486e84e7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61432e3a10c7eecd365d723486e84e7f">&#9670;&nbsp;</a></span>getCurrentTimeStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string&amp; utils::getCurrentTimeStr </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>time_str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the Current Time Str object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time_str</td><td>Sets this string to the current time in string format </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>auto&amp; reference to the string </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="abd246a5687b11ea0224effb1ab1454a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd246a5687b11ea0224effb1ab1454a0">&#9670;&nbsp;</a></span>MICROS_TO_MILLIS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a> utils::MICROS_TO_MILLIS { 1000 }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68a0820e7d635c2b414bca2840b82549"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68a0820e7d635c2b414bca2840b82549">&#9670;&nbsp;</a></span>MILLIS_TO_SECS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a> utils::MILLIS_TO_SECS { 1000 }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a517d6a48996a4a1398eaa2c18e8e8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a517d6a48996a4a1398eaa2c18e8e8d">&#9670;&nbsp;</a></span>NANOS_TO_MICROS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a> utils::NANOS_TO_MICROS { 1000 }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ae36c9a00975b64c5ee3c7731cf2666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ae36c9a00975b64c5ee3c7731cf2666">&#9670;&nbsp;</a></span>NANOS_TO_MILLIS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a> utils::NANOS_TO_MILLIS { <a class="el" href="namespaceutils.html#a5a517d6a48996a4a1398eaa2c18e8e8d">NANOS_TO_MICROS</a> * <a class="el" href="namespaceutils.html#abd246a5687b11ea0224effb1ab1454a0">MICROS_TO_MILLIS</a> }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4cce5c34fc1fe1baf5db27b6e779c2eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cce5c34fc1fe1baf5db27b6e779c2eb">&#9670;&nbsp;</a></span>NANOS_TO_SECS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="namespaceutils.html#a1c5de798ee2b32a56c9be499b1171b51">Nanos</a> utils::NANOS_TO_SECS { <a class="el" href="namespaceutils.html#a9ae36c9a00975b64c5ee3c7731cf2666">NANOS_TO_MILLIS</a> * <a class="el" href="namespaceutils.html#a68a0820e7d635c2b414bca2840b82549">MILLIS_TO_SECS</a> }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

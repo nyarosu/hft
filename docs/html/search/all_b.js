@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['threads_22',['threads',['../namespaceutils_1_1threads.html',1,'utils']]],
-  ['updatereadindex_23',['updateReadIndex',['../classlfds_1_1SPSCQueue.html#ac55294b1a91ae1aee1f7f6b36ecb22a7',1,'lfds::SPSCQueue']]],
-  ['updatewriteindex_24',['updateWriteIndex',['../classlfds_1_1SPSCQueue.html#ae6d9aab86da416b3410fac44348dc960',1,'lfds::SPSCQueue']]],
-  ['utils_25',['utils',['../namespaceutils.html',1,'']]]
+  ['setthreadcore_45',['setThreadCore',['../namespaceutils_1_1threads.html#a55975a27a3a02744a1a971a5ffb301f2',1,'utils::threads']]],
+  ['size_46',['size',['../classlfds_1_1SPSCQueue.html#a8ed7468492e5f5618249b0080c44cce3',1,'lfds::SPSCQueue']]],
+  ['spscqueue_47',['SPSCQueue',['../classlfds_1_1SPSCQueue.html',1,'lfds::SPSCQueue&lt; T &gt;'],['../classlfds_1_1SPSCQueue.html#af2e63f98b8c2e748d95330dbdcf53564',1,'lfds::SPSCQueue::SPSCQueue(std::size_t size)'],['../classlfds_1_1SPSCQueue.html#a9bf133471a6ab9abc027bee4510c049a',1,'lfds::SPSCQueue::SPSCQueue()=delete'],['../classlfds_1_1SPSCQueue.html#a7d92d52738697f8d33d8f5998c4264fe',1,'lfds::SPSCQueue::SPSCQueue(const SPSCQueue &amp;)=delete'],['../classlfds_1_1SPSCQueue.html#ae0f7a6abe39dce756e20db5e650d41c5',1,'lfds::SPSCQueue::SPSCQueue(SPSCQueue &amp;&amp;)=delete']]],
+  ['spscqueue_2ehpp_48',['spscqueue.hpp',['../spscqueue_8hpp.html',1,'']]],
+  ['spscqueue_3c_20logger_3a_3alogelement_20_3e_49',['SPSCQueue&lt; logger::LogElement &gt;',['../classlfds_1_1SPSCQueue.html',1,'lfds']]]
 ];

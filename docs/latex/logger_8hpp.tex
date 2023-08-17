@@ -1,0 +1,40 @@
+\hypertarget{logger_8hpp}{}\doxysection{/home/nyarosu/repos/hft/src/libs/logger/include/logger/logger.hpp File Reference}
+\label{logger_8hpp}\index{/home/nyarosu/repos/hft/src/libs/logger/include/logger/logger.hpp@{/home/nyarosu/repos/hft/src/libs/logger/include/logger/logger.hpp}}
+
+
+Public interface of logger class.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include \char`\"{}lfds/spscqueue.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}logger/log\+\_\+element.\+hpp\char`\"{}}\newline
+Include dependency graph for logger.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classlogger_1_1Logger}{logger\+::\+Logger}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classlogger_1_1Logger}{Logger}} class to log to a file. Runs on a background thread for performance reasons. Communicates with main threads via lock free SPSC queue -\/ main threads write data to the queue, logger reads and writes to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacelogger}{logger}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Public interface of logger class. 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/08-\/15 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}

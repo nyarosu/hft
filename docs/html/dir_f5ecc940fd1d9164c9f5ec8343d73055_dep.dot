@@ -5,7 +5,11 @@ digraph "/home/nyarosu/repos/hft/src/libs/lfds" {
   subgraph clusterdir_87a455bccb09a92130c26a11a880c98a {
     graph [ bgcolor="#ddddee", pencolor="black", label="libs" fontname="Helvetica", fontsize="10", URL="dir_87a455bccb09a92130c26a11a880c98a.html"]
   dir_0613198e77a9b173fe3ff0a50633b455 [shape=box label="utils" fillcolor="white" style="filled" color="red" URL="dir_0613198e77a9b173fe3ff0a50633b455.html"];
-  dir_f5ecc940fd1d9164c9f5ec8343d73055 [shape=box, label="lfds", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_f5ecc940fd1d9164c9f5ec8343d73055.html"];
+  subgraph clusterdir_f5ecc940fd1d9164c9f5ec8343d73055 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_f5ecc940fd1d9164c9f5ec8343d73055.html"];
+    dir_f5ecc940fd1d9164c9f5ec8343d73055 [shape=plaintext label="lfds"];
+  dir_48d17cfc129a1f0287cf07d36c31c685 [shape=box label="include" fillcolor="white" style="filled" color="red" URL="dir_48d17cfc129a1f0287cf07d36c31c685.html"];
   }
-  dir_f5ecc940fd1d9164c9f5ec8343d73055->dir_0613198e77a9b173fe3ff0a50633b455 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000004.html"];
+  }
+  dir_48d17cfc129a1f0287cf07d36c31c685->dir_0613198e77a9b173fe3ff0a50633b455 [headlabel="1", labeldistance=1.5 headhref="dir_000004_000010.html"];
 }

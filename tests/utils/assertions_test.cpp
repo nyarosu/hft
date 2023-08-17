@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "assertions.hpp"
+#include "utils/assertions.hpp"
 
 TEST(AssertionsTests, AssertingFalseTerminates)
 {
