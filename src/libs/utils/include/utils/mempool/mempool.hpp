@@ -104,6 +104,7 @@ namespace utils {
             
             ASSERT(!data_[index].is_free, "Attempted to deallocate unallocated entry in pool.");
             data_[index].is_free = true;
+            data_[index].data.~T();
             next_free_index_ = index;
         };
 

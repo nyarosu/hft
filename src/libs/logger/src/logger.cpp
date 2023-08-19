@@ -16,7 +16,7 @@ namespace logger {
         : file_name_ { file_name }, queue_ { LOG_QUEUE_SIZE } 
     {
         // Attempt to load provided file name, triggering an assertion error if it fails
-        file_.open(file_name);
+        file_.open(file_name, std::ios::out | std::ios::app);
         utils::ASSERT(file_.is_open(), "Failed to open log file: " + file_name);
 
         // Spawn background thread that will handle writes. -1 affinity indicates not to set affinity - this is a low priority, background thread.
@@ -37,6 +37,19 @@ namespace logger {
 
         file_.close();
     }
+
+    void Logger::log(const char* str) noexcept  {
+            while (*str) {
+                if (*str == '%') {
+                    if (*(str + 1) == '%') [[unlikely]] {
+                        ++str;
+                    } else {
+                        return;
+                    }
+                }
+                pushValue(*str++);
+            }
+        }
 
     void Logger::consumeQueue() noexcept {
         while (running_) {
@@ -68,6 +81,13 @@ namespace logger {
             // Ran out of elements, let's wait before checking again.
             std::this_thread::sleep_for(std::chrono::milliseconds { 1 });
         }
+    }
+
+    void Logger::flushQueue() noexcept {
+        while (queue_.size()) {
+            std::this_thread::sleep_for(std::chrono::seconds { 1 });
+        }
+        file_.flush();
     }
     
     void Logger::pushValue(const LogElement& element) noexcept {
