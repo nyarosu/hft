@@ -93,18 +93,12 @@ namespace logger {
          * @note Remember to include newline character unless you specifically don't want it.
          * @param str String to log to the logfile.
          */
-        void log(const char* str) noexcept {
-            while (*str) {
-                if (*str == '%') {
-                    if (*(str + 1) == '%') [[unlikely]] {
-                        ++str;
-                    } else {
-                        return;
-                    }
-                }
-                pushValue(*str++);
-            }
-        }
+        void log(const char* str) noexcept;
+
+        /**
+         * @brief Block calling thread until the queue is empty (meaning all log entries have been written to disk.)
+         */
+        void flushQueue() noexcept;
 
     private:
         /**
