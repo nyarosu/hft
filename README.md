@@ -62,7 +62,7 @@ Built for Linux x86 systems only (some inline x86 ASM is used, and some POSIX sy
 ### Built With
 
 * C++ (vast majority)
-* C (only for certain system calls/APIs)
+* C (networking code and certain Linux system calls)
 * x86 assembly (certain inline portions)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -76,8 +76,8 @@ Build with cmake, run tests with ctest to test if everything works. If all good,
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * An x86 based, Linux system. The project will only build and run on this, as I mentioned before due to proprietary system calls and inline ASM. I will try to make this project more portable in the future if I can.
+* Trading account on TODO platform with either real funds or mock funds (todo how?)
 * cmake
   ```sh
   sudo apt-get install cmake
@@ -91,19 +91,19 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/nyarosu/hft.git
    ```
-3.  Go into the repository and then into the extern.
+3.  cd into the repository, then cd into extern.
   ```sh
    cd hft/extern
    ```
-4.  Clone the vcpkg repository.
+4.  Clone the vcpkg repository (package manager used by the project)
   ```sh
    git clone https://github.com/Microsoft/vcpkg.git
    ```
-5. Go back to the root repository and make a build directory
+5. Go back to the root repository and create a build directory
   ```sh
    cd .. && mkdir build
    ```
-6. Build with cmake. 
+6. Build with cmake (go into the new build directory, generate build files, then use build files to compile the project)
    ```sh
    cd build && cmake -S .. -B . && cmake --build .
    ```
@@ -113,7 +113,7 @@ This is an example of how to list things you need to use the software and how to
    ```
 8. Start the trading system (from inside build)
    ```sh
-   ./app/HFT
+   ./bin/HFT
    ```
 
 
