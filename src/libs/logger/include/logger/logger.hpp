@@ -12,7 +12,6 @@
 #include <thread>
 
 #include "lfds/spscqueue.hpp"
-
 #include "logger/log_element.hpp"
 
 namespace logger {
@@ -97,6 +96,7 @@ namespace logger {
 
         /**
          * @brief Block calling thread until the queue is empty (meaning all log entries have been written to disk.)
+         * @note Only use case for this is tests due to the long blocking time. Do not use in production code.
          */
         void flushQueue() noexcept;
 
