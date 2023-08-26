@@ -1,13 +1,12 @@
 add_executable(
-    LoggerTests
-    logger_test.cpp
+    NetworkingTests
+    test_socket_utils.cpp
 )
 
 target_link_libraries(
-    LoggerTests 
+    NetworkingTests 
 
-    Logger
-
+    Networking
     TestUtils
 
     GTest::gtest_main 
@@ -16,7 +15,5 @@ target_link_libraries(
     GTest::gmock_main
 )
 
-target_include_directories(LoggerTests PUBLIC .)
-
 include(GoogleTest)
-gtest_discover_tests(LoggerTests)
+gtest_discover_tests(NetworkingTests)

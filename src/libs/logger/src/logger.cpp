@@ -38,7 +38,19 @@ namespace logger {
         file_.close();
     }
 
+    void Logger::setPrefix(const std::string& prefix) noexcept {
+        prefix_ = prefix;
+    }
+
+    void Logger::clearPrefix() noexcept {
+        prefix_ = "";
+    }
+
     void Logger::log(const char* str) noexcept  {
+        // If prefix is set, write that first
+        if (!prefix_.empty()) {
+            pushValue(prefix_);
+        }
             while (*str) {
                 if (*str == '%') {
                     if (*(str + 1) == '%') [[unlikely]] {

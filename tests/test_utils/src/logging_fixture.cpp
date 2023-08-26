@@ -4,21 +4,21 @@
  * @date 2023-08-18
  * @copyright Copyright (c) 2023
  */
+#include "test_utils/logging_fixture.hpp"
 
-#include "logger_fixture.hpp"
 #include <string>
 #include <random>
 
-void LoggerTests::SetUp() {
+void LoggingFixture::SetUp() {
     logFileName_ = createLogFileName();
     logger_ = std::make_unique<logger::Logger>(logFileName_ );
 }
 
-void LoggerTests::TearDown() {
+void LoggingFixture::TearDown() {
     std::remove(logFileName_.c_str());
 }
 
-std::string LoggerTests::createLogFileName() {
+std::string LoggingFixture::createLogFileName() {
     // All log files will be named log_<random_number>.log
     std::string logFileName = "log_";
     

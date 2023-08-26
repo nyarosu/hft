@@ -1,7 +1,9 @@
 #include <gtest/gtest.h>
 
 #include "logger/logger.hpp"
-#include "logger_fixture.hpp"
+#include "test_utils/logging_fixture.hpp"
+
+class LoggerTests : public LoggingFixture {};
 
 using namespace logger;
 
@@ -67,4 +69,26 @@ TEST_F(LoggerTests, ReuseLogFile) {
 
     std::getline(file, line);
     ASSERT_EQ(line, "Hello, world! From Logger 2");
+}
+
+TEST_F(LoggerTests, LogWithPrefix) {
+    logger_->setPrefix("Test prefix: ");
+    logger_->log("Hello, world!\n");
+
+    logger_->flushQueue();
+
+    std::ifstream file { getLogFileName() };
+    ASSERT_TRUE(file.is_open());
+
+    std::string line;
+    std::getline(file, line);
+    ASSERT_EQ(line, "Test prefix: Hello, world!");
+
+    logger_->clearPrefix();
+    logger_->log("Hello, world!\n");
+
+    logger_->flushQueue();
+
+    std::getline(file, line);
+    ASSERT_EQ(line, "Hello, world!");
 }

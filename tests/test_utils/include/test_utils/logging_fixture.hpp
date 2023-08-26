@@ -9,7 +9,7 @@
 #include <gtest/gtest.h>
 #include "logger/logger.hpp"
 
-class LoggerTests: public ::testing::Test {
+class LoggingFixture: public ::testing::Test {
     protected:
         /**
          * @brief Create logger object
