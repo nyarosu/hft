@@ -29,6 +29,9 @@ namespace logger {
         // Log file stream that data is written to
         std::ofstream file_;
 
+        // Optional prefix to add to each log entry
+        std::string prefix_ { "" };
+
         // Queue log reads incoming messages from
         lfds::SPSCQueue<LogElement> queue_;
         
@@ -86,7 +89,18 @@ namespace logger {
             pushValue(*str++);
           }
         }; 
+
+        /**
+         * @brief Optional prefix to add to each log entry, until cleared
+         * @param prefix the prefix string
+         */
+        void setPrefix(const std::string& prefix) noexcept;
         
+        /**
+         * @brief Clear the prefix
+         */
+        void clearPrefix() noexcept;
+
         /**
          * @brief Log a message to the logfile. No format string version - simple strings.
          * @note Remember to include newline character unless you specifically don't want it.

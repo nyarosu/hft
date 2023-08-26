@@ -1,7 +1,7 @@
 #pragma once
 /**
  * @file sockets.hpp
- * @brief Utils for working with sockets
+ * @brief Lower-level utils for working with sockets. Mostly wrappers around system calls.
  * @copyright Copyright (c) 2023
  */
 
@@ -21,10 +21,8 @@
 
 #include "logger/logger.hpp"
 
-namespace utils::networking {
-    /**
-     * @brief Maximum connections that can be waiting in listen() queue
-     */
+namespace networking {
+    // Maximum connections that can be waiting in listen() queue
     constexpr int MAX_QUEUED_CONNECTIONS { 1024 };
     
     /**
@@ -55,7 +53,18 @@ namespace utils::networking {
      */
     bool setSOTimestamp(int fd);
 
+    /**
+     * @brief Check errno to determine whether a socket operation would block
+     */
     bool wouldBlock();
+
+    /**
+     * @brief Set TTL for unicast packets sent from FD.
+     * @param fd socket descriptor
+     * @param ttl TTL to set
+     * @return bool Success
+     */
+    bool setTTL(int fd, int ttl);
 
     /**
      * @brief Set TTL for multicast packets sent from FD.
@@ -66,13 +75,6 @@ namespace utils::networking {
      */
     bool setMulticastTTL(int fd, int ttl);
 
-    /**
-     * @brief Set TTL for unicast packets sent from FD.
-     * @param fd socket descriptor
-     * @param ttl TTL to set
-     * @return bool Success
-     */
-    bool setTTL(int fd, int ttl);
 
     /**
      * @brief Join multicast group
