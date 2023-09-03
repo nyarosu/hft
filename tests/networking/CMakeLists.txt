@@ -1,6 +1,7 @@
 add_executable(
     NetworkingTests
     test_socket_utils.cpp
+    test_tcp_socket.cpp
 )
 
 target_link_libraries(
