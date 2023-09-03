@@ -15,7 +15,7 @@ void LoggingFixture::SetUp() {
 }
 
 void LoggingFixture::TearDown() {
-    std::remove(logFileName_.c_str());
+    // std::remove(logFileName_.c_str());
 }
 
 std::string LoggingFixture::createLogFileName() {

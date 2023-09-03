@@ -78,6 +78,13 @@ namespace networking {
         msg.msg_iovlen = 1;
 
         const auto n_recv = recvmsg(fd_, &msg, MSG_DONTWAIT);
+        logger_.log("%:% %() % recv_attempt:% result:%\n", __FILE__, __LINE__,
+            __FUNCTION__, utils::getCurrentTimeStr(time_str_), fd_, n_recv);
+        
+        if (n_recv < 0) [[unlikely]] {
+            logger_.log("%:% %() % error on recv:% strerrno:%\n", __FILE__, __LINE__,
+            __FUNCTION__, utils::getCurrentTimeStr(time_str_), fd_, strerror(errno));
+        }
         if (n_recv > 0) {
             next_rcv_valid_index_ += n_recv;
             utils::Nanos kernel_time = 0;
