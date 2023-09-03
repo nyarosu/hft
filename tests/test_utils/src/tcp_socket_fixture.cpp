@@ -21,7 +21,7 @@ void TCPSocketFixture::SetUp() {
     sockaddr_in addr;
     memset(&addr, 0, sizeof(addr));
     addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
     addr.sin_port = htons(0);
 
     socklen_t len = sizeof(addr);
@@ -44,8 +44,9 @@ std::unique_ptr<networking::TCPSocket> TCPSocketFixture::acceptClient() {
 
     // Accept connection on server, with timeout
     int attempts { 0 };
+    socklen_t len { sizeof(server_sockaddr_) };
     while (attempts < MAX_ATTEMPTS) {
-        int ret { accept(server_->fd_, (struct sockaddr*)&server_sockaddr_, (socklen_t*)&server_sockaddr_) };
+        int ret { accept(server_->fd_, (struct sockaddr*)&server_sockaddr_, &len) };
         if (ret == -1) {
             attempts++;
             std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));

@@ -56,6 +56,6 @@ TEST_F(TCPSocketTests, SendDataTCPSocket) {
     ASSERT_EQ(read.value(), data.size());
 
     // Check that the data is correct
-    std::string read_data { buf };
+    std::string read_data { buf, read.value() };
     ASSERT_EQ(read_data, data);
 }
