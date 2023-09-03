@@ -97,9 +97,17 @@ namespace networking {
          * @brief Send data over the socket. Copies the provided data into the send buffer.
          * @param data Data to send
          * @param len Length of the data
-         * @return int -1 on failure, otherwise number of bytes added to the send buffer
+         * @return int -1 on failure, otherwise number of bytes queued to be sent
          */
         int send(const void* data, size_t len) noexcept;
+
+        /**
+         * @brief Reads available data into receive buffer, icnrement counters, and invoke callback 
+         * if any data was read. Also writes out data in send_buffer (that came from send) to the wire and updates counters.
+         * @return true Data was received  
+         * @return false No data was received
+         */
+        bool sendAndRecv() noexcept;
 
     };
 }

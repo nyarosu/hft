@@ -7,3 +7,7 @@ TEST(CreateAndConnect, TCPSocketTests) {
     int fd { socket.connect("www.google.com", "enp3s0", 80, false) };
     ASSERT_NE(fd, -1);
 }
+
+TEST(CreateAndConnectAndSend, TCPSocketTests) {
+
+}
