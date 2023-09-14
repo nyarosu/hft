@@ -54,7 +54,31 @@ protected:
     std::unique_ptr<networking::TCPSocket> acceptClient();
 
     /**
-     * @brief Read data from server
+     * @brief Read data sent to server
+     * @param server_client_socket Socket recieved from acceptClient()
+     * @param buf Buffer to write received data to
+     * @param len Length of data to receive
+     * @return std::optional<int> Number of bytes received, or std::nullopt if error
      */
     std::optional<int> readFromServer(networking::TCPSocket& server_client_socket, char* buf, size_t len);
+
+    /**
+     * @brief Connects to the test server, and accepts the connection on the server side
+     * @returns unique_ptr to server's client socket
+     */
+    std::unique_ptr<networking::TCPSocket> connectToServer();
+
+    /**
+     * @brief Generate a random payload of length len
+     * @param len Length of payload to generate
+     * @return std::string Random data (that you can send over a socket)
+     */
+    std::string generateRandomPayload(size_t len);
+
+    /**
+     * @brief This is similar to the other readFromServer, but it blocks until data is received
+     * If data is not received within a certain timeframe, it will return nullopt.
+     * Otherwise, it will return the number of bytes received.
+     */
+    std::optional<int> readFromServerBlocking(networking::TCPSocket& server_client_socket, char* buf, size_t len);
 };

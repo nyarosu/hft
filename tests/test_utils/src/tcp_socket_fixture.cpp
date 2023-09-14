@@ -81,3 +81,51 @@ std::optional<int> TCPSocketFixture::readFromServer(networking::TCPSocket& serve
 
     return len;
 }
+
+std::unique_ptr<networking::TCPSocket> TCPSocketFixture::connectToServer() {
+    // Connect to test server
+    int fd { socket_->connect(server_addr_, "lo", server_port_, false) };
+
+    // Accept connection on server
+    auto server_client_socket { acceptClient() };
+
+    return server_client_socket;
+};
+
+// Function to generate random data
+std::string TCPSocketFixture::generateRandomPayload(size_t length) {
+    std::string charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    std::string result;
+    result.resize(length);
+
+    for (size_t i = 0; i < length; i++) {
+        result[i] = charset[rand() % charset.length()];
+    }
+    return result;
+}
+
+std::optional<int>  TCPSocketFixture::readFromServerBlocking(networking::TCPSocket& server_client_socket, char* buf, size_t len) {
+    constexpr int MAX_ATTEMPTS { 15 };
+    constexpr int SLEEP_TIME_MS { 200 };
+    
+    int attempts { 0 };
+    while (attempts < MAX_ATTEMPTS) {
+        if (server_client_socket.sendAndRecv()) {
+            // Write from socket buffer to buf provided in argument, first validating len
+            if (len > networking::BUFFER_SIZE || len > server_client_socket.next_rcv_valid_index_) {
+                logger_->log("%:% %() % TCPSocketFixture::readFromServer() invalid len:%\n",
+                __FILE__, __LINE__, __FUNCTION__, len);
+                return std::nullopt;
+            }
+            memcpy(buf, server_client_socket.recv_buf_.get(), len);
+
+            return len;
+        }
+        attempts++;
+        std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
+    }
+    logger_->log("%:% %() % TCPSocketFixture::blockUntilServerRecv() failed to receive data from server\n",
+        __FILE__, __LINE__, __FUNCTION__);
+
+    return std::nullopt;
+}
