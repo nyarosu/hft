@@ -21,7 +21,7 @@ namespace networking {
      * @param s Socket object
      * @param rx_time Receive time
      */
-    void defaultRecvCallback(TCPSocket* s, utils::Nanos rx_time) noexcept;
+    void defaultRecvSocketCallback(TCPSocket* s, utils::Nanos rx_time) noexcept;
 
     class TCPSocket {
     public:
@@ -70,7 +70,7 @@ namespace networking {
          * Callback should take a pointer to the socket and the time, in ns, at which the data was recieved.
          * By default, is set to a callback that just logs its invocation.
          */
-        std::function<void(TCPSocket* s, utils::Nanos rx_time)> recv_callback_ { defaultRecvCallback };
+        std::function<void(TCPSocket* s, utils::Nanos rx_time)> recv_callback_ { defaultRecvSocketCallback };
 
         std::string time_str_;
 
